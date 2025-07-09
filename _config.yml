@@ -1,7 +1,7 @@
-title: devlopr
-subtitle: A Portfolio Jekyll Theme Built for Developers
+title: Matthew Allen
+subtitle: A Portfolio
 description: >- # this means to ignore newlines until "baseurl:"
-  devlopr-jekyll is a beautiful Jekyll Theme Built For Developers, which is optimized for speed and readability.
+  Matthew Allen's CS Portfolio. A collection of my work, projects, and experiences.
 
 url: "" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -25,13 +25,13 @@ urls:
 # Edit Author details (For multi authors check _data/authors.yml)
 
 author_logo: profile.png
-author: John Doe
-author_bio: Hi, my name is John Doe. I built this site using devlopr-jekyll :D
-author_email: "mail@sujaykundu.com"
-author_location: India
-author_website_url: "https://sujaykundu.com"
-typewrite-text: devlopr is a jekyll framework built for developers. You can edit this in _config.yml file
-hero_cover_img: sample_cover.jpg # replace this for changing homepage cover (eg. try cover.jpeg). Image should be in /assets/img
+author: Matthew Allen
+author_bio: Hi, my name is Matthew Allen. I am a student at Boston University studying Computer Science!
+author_email: "allenmc220@gmail.com"
+author_location: Boston & Kansas City
+author_website_url: "https://sujaykundu.com" #TODO: Update this with my website URL
+typewrite-text: Hello! I'm a student at Boston University studying Computer Science!
+hero_cover_img: home_screen.jpg # replace this for changing homepage cover (eg. try cover.jpeg). Image should be in /assets/img
 
 # Experiences
 author_work_experiences:
@@ -134,8 +134,6 @@ paginate_path: "/blog/page/:num/"
 
 collections:
   products:
-    output: true
-  authors:
     output: true
 
 defaults:
