@@ -3,3 +3,4 @@ build
 _site
 .gradle
 assets/bower_components
+.jekyll-metadata
