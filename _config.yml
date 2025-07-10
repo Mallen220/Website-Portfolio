@@ -35,26 +35,39 @@ hero_cover_img: home_screen.jpg # replace this for changing homepage cover (eg. 
 
 # Experiences
 author_work_experiences:
-            - company_name: Google
-              company_logo: google.png
-              company_url: https://google.com
-              designation: Software Engineer
-              description: Worked on various Google Products
+            - company_name: Tech Academy of Minnesota
+              company_logo: TechAcademy.jpg
+              company_url: https://www.techacademymn.com
+              designation: STEM Teacher
+              description: Teacher for Elementary school students in the Kansas City area. Taught students about STEM and how to build robots.
               visibility: true
-            - company_name: Microsoft
-              company_logo: microsoft.png
-              company_url: https://microsoft.com
-              designation: Azure Developer
-              description: Worked on various Azure Cloud Products
+            - company_name: Goodwill of Western MO & Eastern KS
+              company_logo: Goodwill.png
+              company_url: https://www.mokangoodwill.org/
+              designation: Ecommerce Photographer
+              description: Photographed and edited images of products for online sales.
               visibility: true
+            - company_name: Flowers by Ranchview
+              company_logo: Transparent.png
+              company_url: https://ranchviewfloral.com/
+              designation: Driver
+              description: Delivered flowers to customers in the Kansas City area.
+              visibility: true
+
 
 # Education
 author_education_details:
-              - college_logo: mit.png
-                college_name: MIT
-                college_url: https://mit.org
-                college_degree: CS Engineer
-                description: Bachelor of Technology
+              - college_logo: Boston_University.svg
+                college_name: Boston University
+                college_url: https://www.bu.edu/
+                college_degree: Computer Science
+                description: Bachelor's degree
+                visibility: true
+              - college_logo: LSNHS.png
+                college_name: Lee's Summit North High School
+                college_url: https://lsnhs.lsr7.org/
+                college_degree: High School Diploma
+                description:
                 visibility: true
 
 # Projects
@@ -71,11 +84,11 @@ author_project_details:
                 visibility: true
 
 # social links
-twitter_username: xplor4r
-github_username:  sujaykundu777
-instagram_username: xplor4r
+#twitter_username: xplor4r
+github_username:  Mallen220
+#instagram_username: xplor4r
 # facebook_username: johndoe
-# linkedin_username: johndoe
+linkedin_username: matthew-allen-frc1987ftc17218
 # behance_username: johndoe
 # medium_username: johndoe
 # telegram_username: johndoe
@@ -88,14 +101,14 @@ instagram_username: xplor4r
 # hyvor_talk_website_id: 476
 
 # wakatime username (coding activity)
-wakatime_username: sujaykundu777
+#wakatime_username: sujaykundu777
 
 # mailchimp embedded form url (newsletter):
-mailchimp_form_url: https://sujaykundu.us10.list-manage.com/subscribe/post?u=50bab1c85eae24ecfb0f68361&amp;id=3a2dd721d0
+#mailchimp_form_url: https://sujaykundu.us10.list-manage.com/subscribe/post?u=50bab1c85eae24ecfb0f68361&amp;id=3a2dd721d0
 
 # contact form - (choose formspress or getform)
 # getform_endpoint: 83b703c3-9e47-4df4-ac55-e24d7eb02abc
-formspree_email: johndoe@gmail.com
+#formspree_email: johndoe@gmail.com
 
 # releases - widget can be (sidebar, modal or embed)
 olvy_organization: devlopr

@@ -686,12 +686,13 @@ header {
     .profile-bio,
     .profile-links {
         margin-top: 5px;
+        margin-bottom: 5px;
     }
     .social-link {
         color: var(--social-link-color) !important;
         font-size: 15px;
-        padding: 5px;
-        margin: 2px;
+        padding: 10px;
+        margin: 10px;
         text-decoration: none !important;
     }
     #header-nav{
@@ -724,8 +725,8 @@ header {
 
 
 .company-logo {
-    width: 100px;
-    height: 100px;
+    max-height: 100px;
+    max-width: 100px;
 }
 
 .author-profile-img {
