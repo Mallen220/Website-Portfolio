@@ -207,6 +207,11 @@ sass:
   sass_dir: _sass
   style: compressed
 
+include:
+  - _sass
+  - _config.yml
+  - config.yml
+
 exclude:
   - .sass-cache/
   - .jekyll-cache/
