@@ -1,0 +1,25 @@
+python:
+- title: Welcome to devlopr-jekyll !
+  url: "/projects/welcome-to-devlopr-jekyll/"
+  date: 2019-05-22
+jekyll:
+- title: Adding Multiple languages in Projects
+  url: "/projects/adding-languages-tags-in-projects/"
+  date: 2021-02-28
+- title: Added Multi Author Support
+  url: "/projects/added-multi-author-support/"
+  date: 2020-10-25
+- title: Added Latex Support
+  url: "/projects/added-latex-equations-support/"
+  date: 2020-10-24
+- title: Netlify CMS created this Article
+  url: "/projects/using-netlify-cms/"
+  date: 2020-05-23
+guides:
+- title: Adding Multiple languages in Projects
+  url: "/projects/adding-languages-tags-in-projects/"
+  date: 2021-02-28
+sample_language:
+- title: Adding Multiple languages in Projects
+  url: "/projects/adding-languages-tags-in-projects/"
+  date: 2021-02-28

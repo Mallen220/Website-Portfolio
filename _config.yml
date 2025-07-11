@@ -149,7 +149,8 @@ pagination:
 #   layout: archive
 #   permalinks:
 #     languages: '/language/:name/'
-languages: ["Python", "JavaScript", "Java", "C++", "C#", "HTML", "CSS", "Ruby", "PHP", "Swift", "Kotlin", "Go", "Rust", "sample_language", "guides", "jekyll"]
+
+
 #  Python:
 #    - title: "Tetris AI"
 #      url: /projects/tetris
@@ -231,6 +232,8 @@ include:
   - _sass
   - _config.yml
   - config.yml
+  - _config_languages.yml
+
 
 exclude:
   - .sass-cache/

@@ -4,8 +4,3 @@ _site
 .gradle
 assets/bower_components
 .jekyll-metadata
-
-languages/*
-
-!languages/all.md
-!languages/sample_language.md
