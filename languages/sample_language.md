@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Guides
+title: sample_language
 permalink: /projects/languages/sample_language/
 ---
 
@@ -8,6 +8,6 @@ permalink: /projects/languages/sample_language/
 
 <div class="card">
 {% for project in site.languages.sample_language %}
- <li class="language-project"><span>{{ project.date | date_to_string }}</span> &nbsp; <a href="{{ project.url }}">{{ project.title }}</a></li>
+  <li class="language-project"><span>{{ project.date | date_to_string }}</span> &nbsp; <a href="{{ project.url }}">{{ project.title }}</a></li>
 {% endfor %}
 </div>
