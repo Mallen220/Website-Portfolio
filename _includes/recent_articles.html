@@ -1,39 +1,41 @@
 <section id="recent-articles">
   <div id="recent-articles-header">
     <div id="recent-articles-title">
-      <h1 class="card-title">Recent Articles</h1>
+      <h1 class="card-title">Recent Projects</h1>
     </div>
     <div id="recent-articles-show-all">
-      <a class="btn btn-lg btn-dark" href="/blog"> View All </a>
+      <a class="btn btn-lg btn-dark" href="/projects"> View All </a>
     </div>
   </div>
   <br />
 
   <ul>
-    {% for post in site.posts limit:5 %}
+    {% for project in site.projects limit:5 %}
     <li class="article-card">
-      <a href="{{post.url}}" class="article-card-link">
+      <a href="{{project.url}}" class="article-card-link">
         <div id="article-container">
           <div id="article-img">
-            {% if post.author %}
-              {% assign author = post.author %}
-              {% if author %}
-               {% assign author_data = site.data.authors[author] %}
+            {% if project.thumbnail %}
                <img
-                src="{{site.url}}{{site.baseurl}}/assets/img/authors/{{author_data.avatar}}"
-                width="50px"
-                height="50px"
-             />
-              {% endif %}
+                src="{{site.url}}{{site.baseurl}}/{{project.thumbnail}}"
+                width="100px"
+
+                />
+            {% else %}
+                <img
+                    src="{{site.url}}{{site.baseurl}}/assets/img/projects/github.svg"
+                    width="100px"
+                    />
             {% endif %}
+
 
           </div>
           <div id="article-link">
-              <p class="recent-article-link">{{post.title}} <span style="color: #ccc; font-size: 15px;"> - <i><time datetime="{{ post.date }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time></i></span></p>
+              <p class="recent-article-link">{{project.title}} <span style="color: #ccc; font-size: 15px;"> - <i><time datetime="{{ project.date }}" itemprop="datePublished">{{ project.date | date: "%b %-d, %Y" }}</time></i></span></p>
             </div>
             <div id="article-alert">
-            {% for cat in post.category limit:1 %}
-             <button class="btn btn-sm btn-dark">{{cat}}</button>
+            {% for lang in project.language limit:1 %}
+             <button class="btn btn-sm btn-dark">{{lang}}</button>
             {% endfor %}
             </div>
         </div>

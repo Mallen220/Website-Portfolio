@@ -7,7 +7,7 @@ $(document).ready(function() {
         search_result_template = "\
           <div class='search-results__item'>\
             <a class='search-results__item__title' href='{{link}}'>{{title}}</a>\
-            <span class='post__date'>{{pubDate}}</span>\
+            <span class='project__date'>{{pubDate}}</span>\
           </div>";
 
     toggle_search.click(function(event) {
@@ -34,7 +34,7 @@ $(document).ready(function() {
       onKeyUp         : true,
       rss             : base_url + '/feed.xml',
       zeroResultsInfo : false,
-      info_template   : "<h4 class='heading'>Number of posts found: {{amount}}</h4>",
+      info_template   : "<h4 class='heading'>Number ofprojects found: {{amount}}</h4>",
       result_template : search_result_template,
       before: function() {
         search_results.fadeIn();

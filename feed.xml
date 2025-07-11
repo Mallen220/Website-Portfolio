@@ -12,13 +12,13 @@ layout: null
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
 
-    {% for post in site.posts %}
+    {% for project in site.projects %}
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        <title>{{ project.title | xml_escape }}</title>
+        <description>{{ project.content | xml_escape }}</description>
+        <pubDate>{{ project.date | date_to_rfc822 }}</pubDate>
+        <link>{{ project.url | prepend: site.baseurl | prepend: site.url }}</link>
+        <guid isPermaLink="true">{{ project.url | prepend: site.baseurl | prepend: site.url }}</guid>
       </item>
     {% endfor %}
 

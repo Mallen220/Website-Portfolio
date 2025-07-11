@@ -1,12 +1,13 @@
-<article class="card" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="card" itemscope itemtype="http://schema.org/ProjectsPosting">
   <div class="card-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <h4 class="post-meta">{{ page.summary }}</h4>
-    <p class="post-summary">
-      Posted by : {% if page.author %}
+    <h1 class="project-title" itemprop="name headline">{{ page.title }}</h1>
+    <h4 class="project-meta">{{ page.summary }}</h4>
+    <p class="project-summary">
+      Posted by :
       <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name"><a href="{{site.url}}{{site.baseurl}}/blog/authors/{{page.author}}">{{ page.author }}</a></span> </span
-      >{% endif %} on
+        <span itemprop="name"><a href="{{site.url}}{{site.baseurl}}/projects/authors/{{page.author}}">Matthew Allen</a></span>
+      </span>
+      on
       <time datetime="{{ page.date }}" itemprop="datePublished"
         >{{ page.date | date: "%b %-d, %Y" }}</time
       >
@@ -15,33 +16,44 @@
       class="disqus-comment-count"
       data-disqus-identifier="{{ page.url }}"
     ></span>
-    <div class="post-categories">
-      {% if post %} {% assign categories = post.categories %} {% else %} {%
-      assign categories = page.categories %} {% endif %} Category : {% for
-      category in categories %}
-      <a href="{{site.baseurl}}/blog/categories/{{category|slugize}}"
-        >{{category}}</a
-      >
-      {% unless forloop.last %}&nbsp;{% endunless %} {% endfor %}
+    <div class="project-language">
+      {% if project %}
+        {% assign languages = project.languages %}
+      {% else %}
+        {% assign languages = page.languages %}
+      {% endif %}
+        {% assign project_languages = page.languages | default: page.language | split: ',' %}
+        language:
+        {% for lang in languages %}
+          <a href="{{site.baseurl}}/projects/languages/{{lang|slugize}}">{{lang}}</a>
+          {% unless forloop.last %}&nbsp;
+          {% endunless %}
+        {% endfor %}
     </div>
   </div>
 
   <div class="card-body" itemprop="articleBody">
-    <img
-      class="card-img-top"
-      src="{{site.url}}{{site.baseurl}}{{ page.thumbnail }}"
-      alt="{{ post.title }}"
-    />
+    {% if page.thumbnail %}
+      <img
+        class="card-img-top"
+          src="{{site.url}}{{site.baseurl}}{{ page.thumbnail }}"
+        alt="{{ project.title }}"
+      />
+    {% else %}
+      <img
+              class="card-img-top"
+              src="{{site.url}}{{site.baseurl}}/assets/img/projects/github.svg"
+              alt="{{ project.title }}"
+      />
+    {% endif %}
+
     <br />
     <br />
     {{ content }}
     <br />
     {%- include share_page.html -%}
     <!-- Author box -->
-    {% assign author = site.data.authors[page.author] %}
-      {% if author %}
-      {% include author.html %}
-    {% endif %}
+    {% include author.html %}
   </div>
 
   <div class="comments">

@@ -8,32 +8,32 @@ permalink: /get-started/
 
 ## What's Jekyll ?
 
-If you aren’t familiar with Jekyll yet, you should know that it is a static site generator. It will transform your plain text into static websites and blogs. No more databases, slow loading websites, risk of being hacked…just your content. And not only that, with Jekyll you get free hosting with GitHub Pages! If you are a beginner we recommend you start with [Jekyll’s Docs](https://jekyllrb.com/docs/installation/). Now, if you know how to use Jekyll, let’s move on to using this theme in Jekyll:
+If you aren’t familiar with Jekyll yet, you should know that it is a static site generator. It will transform your plain text into static websites and projectss. No more databases, slow loading websites, risk of being hacked…just your content. And not only that, with Jekyll you get free hosting with GitHub Pages! If you are a beginner we recommend you start with [Jekyll’s Docs](https://jekyllrb.com/docs/installation/). Now, if you know how to use Jekyll, let’s move on to using this theme in Jekyll:
 
 ## Watch Tutorial
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cXBEfpn0qrg?rel=0&amp;controls=0&amp;showinfo=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Steps to create your blog using devlopr-jekyll and Host using Github Pages :
+### Steps to create your projects using devlopr-jekyll and Host using Github Pages :
 
 >  **Step 1.**  Fork the repo - [click here](https://github.com/sujaykundu777/devlopr-jekyll/fork)
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork1.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork1.PNG){:class="img-fluid"}
 
-> **Step 2.** Use **your-github-username.github.io** as the new repo  ( Replace your-github-username with yours). Remember if you use the name other than your-github-username.github.io , your blog will be built using gh-pages branch.
+> **Step 2.** Use **your-github-username.github.io** as the new repo  ( Replace your-github-username with yours). Remember if you use the name other than your-github-username.github.io , your projects will be built using gh-pages branch.
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork2.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork2.PNG){:class="img-fluid"}
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork3.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork3.PNG){:class="img-fluid"}
 
 > **Step 3.** Clone the new repo locally to make changes :
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork31.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork31.PNG){:class="img-fluid"}
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork32.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork32.PNG){:class="img-fluid"}
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork33.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork33.PNG){:class="img-fluid"}
 
 ```bash
  $ git clone https://github.com/yourusername/yourusername.github.io
@@ -44,11 +44,11 @@ If you aren’t familiar with Jekyll yet, you should know that it is a static si
 > **Step 4.** Open the files using VSCode and edit _config.yml and edit with your details:
 
 - _config.yml file - replace with your own details
-- _posts - Add your blog posts here
+- _projects - Add your projectsprojects here
 - _includes - You can replace the contents of the files with your data. (contains widgets)
 - _assets/img - Add all your images here
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork34.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork34.PNG){:class="img-fluid"}
 
 > **Step 5** - Install the development requirements:
 
@@ -108,28 +108,27 @@ $ jekyll serve
 
 Visit [http://localhost:4000](http://localhost:4000) for development server
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork41.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork41.PNG){:class="img-fluid"}
 
 
 ### Adding Content
 
-Start populating your blog by adding your .md files in _posts. devlopr-jekyll already has a few examples.
+Start populating your projects by adding your .md files in _projects. devlopr-jekyll already has a few examples.
 
-#### YAML Post Example:
+#### YAML Project Example:
 
 ```yml
 ---
-layout: post
-title: Sample Post
-author: Sujay Kundu
+layout: project
+title: Sample Project
+author: MatthewAllen
 date: '2019-05-21 14:35:23 +0530'
-category:
-        - jekyll
-summary: This is the summary for the sample post
+languages: jekyll
+summary: This is the summary for the sample project
 thumbnail: sample.png
 ---
 
-Hi ! This is sample post.
+Hi ! This is sample project.
 
 ```
 
@@ -151,25 +150,25 @@ You’ll only work with a single file to edit/add theme style: assets/css/main.s
 
 ### Deploy your Changes
 
-Once happy with your blog changes. Push your changes to master branch.
+Once happy with your projects changes. Push your changes to master branch.
 
 > **Step 8.** Push Your Local Changes
 
 ```bash
  $ git add .
- $ git commit -m "my new blog using devlopr-jekyll"
+ $ git commit -m "my new projects using devlopr-jekyll"
  $ git push origin master
 ```
 
 Visit your Github Repo settings ! Enable master branch as Github Pages Branch :
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork6.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork6.PNG){:class="img-fluid"}
 
-> **Step 9.** Deploy your Blog :
+> **Step 9.** Deploy your Projects :
 
-![Devlopr Jekyll Repo](/assets/img/posts/fork7.PNG){:class="img-fluid"}
+![Devlopr Jekyll Repo](/assets/img/projects/fork7.PNG){:class="img-fluid"}
 
-> Congrats ! On your new shining Blog !
+> Congrats ! On your new shining Projects !
 
-You can visit the blog using [http://your-github-username.github.io](http://your-github-username.github.io).
+You can visit the projects using [http://your-github-username.github.io](http://your-github-username.github.io).
 

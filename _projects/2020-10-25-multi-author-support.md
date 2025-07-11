@@ -1,14 +1,14 @@
 ---
-layout: post
+layout: project
 title:  "Added Multi Author Support"
 summary: "Multi Author Support allows to create articles with different Authors"
-author: xplor4r
+author: MatthewAllen
 date: '2020-10-25 1:35:23 +0530'
-category: jekyll
-thumbnail: /assets/img/posts/code.jpg
+languages: jekyll
+thumbnail: /assets/img/projects/code.jpg
 keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll, devlopr-jekyll tutorial,best jekyll themes, multi author
 usemathjax: true
-permalink: /blog/added-multi-author-support/
+permalink: /projects/added-multi-author-support/
 ---
 
 ## Now Multiple Authors Can Create Articles:
@@ -28,7 +28,7 @@ name: John Doe # Name of the Author
 username: johndoe # Username of the Author
 bio: "Hi I a John, a Web Developer and Designer." # Author Bio
 site: http://johndoe.com  # Author Website URL
-avatar: johndoe.png  # Profile Image (img path will be /assets/img/authors/johndoe.png)
+avatar: MatthewAllen.png  # Profile Image (img path will be /assets/img/authors/MatthewAllen.png)
 email: mail@johndoe.com  # Author Email address
 social:  # Author Social profile links
     - title: "github"
@@ -65,7 +65,7 @@ johndoe:
    name: John Doe
    username: johndoe
    site: http://johndoe.com
-   avatar: johndoe.png
+   avatar: MatthewAllen.png
    bio: "Hi I a John, a Web Developer and Designer."
    email: mail@johndoe.com
    social:
@@ -116,19 +116,19 @@ Likewise ! This will be helpful for the widgets. (About Author, Recent Articles)
 
 ### Adding Author to Post
 
-When creating a new post, just add the author in frontmatter using the username of the author
+When creating a new project, just add the author in frontmatter using the username of the author
 
 For eg, In 2020-10-24-demo-article.md
 ```yml
 ---
-layout: post
+layout: project
 title: "Demo Article"
-author: janedoe
+author: MatthewAllen
 ---
 This is Jane Doe's Article
 ```
 
-Now there will be Authors widget in Blog Sidebar, showing all authors like this :
+Now there will be Authors widget in Projects Sidebar, showing all authors like this :
 
 ![Author Sidebar Widget](https://res.cloudinary.com/sujaykundu/image/upload/c_scale,fl_progressive,w_400/v1603700133/3_tiuar0.png)
 

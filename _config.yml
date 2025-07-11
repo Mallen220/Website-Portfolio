@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Matthew Allen's CS Portfolio. A collection of my work, projects, and experiences.
 
 url: "" # the base hostname & protocol for your site, e.g. https://example.github.io
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /projects
 
 # Navigation
 urls:
@@ -12,8 +12,8 @@ urls:
       url: /
     - text: About
       url: /about
-    - text: Blog
-      url: /blog
+    - text: Projects
+      url: /projects
     - text: Gallery
       url: /gallery
     - text: Shop
@@ -124,10 +124,15 @@ show_author_work_experiences: true
 show_author_education_details: true
 show_author_project_details: true
 
-# pagination of posts
+# pagination ofprojects
 paginate: 4
-per_page: 4
-paginate_path: "/blog/page/:num/"
+pagination:
+  enabled: true
+  collection: projects
+  per_page: 4
+  permalink: "/projects/page/:num/"
+
+
 
 # minify
 # compress_html:
@@ -140,14 +145,24 @@ paginate_path: "/blog/page/:num/"
 # Archives
 # jekyll-archives:
 #   enabled:
-#     - categories
+#     - languages
 #   layout: archive
 #   permalinks:
-#     category: '/category/:name/'
+#     languages: '/language/:name/'
+languages: ["Python", "JavaScript", "Java", "C++", "C#", "HTML", "CSS", "Ruby", "PHP", "Swift", "Kotlin", "Go", "Rust", "sample_language", "guides", "jekyll"]
+#  Python:
+#    - title: "Tetris AI"
+#      url: /projects/tetris
+#  sample_language:
+#    - title: "My Sample Project"
+#      url: /projects/sample
+
 
 collections:
-  products:
+  projects:
     output: true
+    permalink: /projects/:path/
+
 
 defaults:
   -
@@ -161,7 +176,7 @@ defaults:
       type: authors
     values:
       layout: author
-      permalink: /blog/authors/:slug
+      permalink: /projects/authors/:slug
   -
     scope:
       path: 'assets/**'
@@ -170,11 +185,16 @@ defaults:
 
 # Build settings
 plugins:
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - language_pages_generator
+
+whitelist:
+  - language_pages_generator
+
 
   # jekyll admin is causing issues with github pages, so it's disabled by default
   # - jekyll-admin 
@@ -182,12 +202,12 @@ plugins:
 # Jekyll Admin Config
 # jekyll_admin:
   # hidden_links:
-  #   - posts
+  #   -projects
   #   - pages
   #   - staticfiles
   #   - datafiles
   #   - configuration
-  # homepage: "posts"
+  # homepage: "projects"
 
 
 # Exclude from processing.

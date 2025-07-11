@@ -1,19 +1,19 @@
 ---
-layout: post
-author: johndoe
+layout: project
+author: MatthewAllen
 title: Netlify CMS created this Article
 date: 2020-05-23T09:52:20.613Z
-thumbnail: /assets/img/posts/hello.jpg
-category: jekyll
+thumbnail: /assets/img/projects/hello.jpg
+languages: jekyll
 summary: Demo Content using Netlify CMS
 keywords: using netlify cms with devlopr-jekyll, devlopr jekyll netlify cms, how to use netlify cms
-permalink: /blog/using-netlify-cms/
+permalink: /projects/using-netlify-cms/
 ---
 ## Hello World
 
-This page is a demo that shows everything you can do inside blog posts. Hi !
+This page is a demo that shows everything you can do inside projectsprojects. Hi !
 
-We’ve included everything you need to create engaging posts about your work, and show off your case studies in a beautiful way.
+We’ve included everything you need to create engagingprojects about your work, and show off your case studies in a beautiful way.
 
 **Obviously,**we’ve styled up *all the basic* text formatting options available in [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 

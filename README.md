@@ -17,7 +17,7 @@ Highly Customizable and No Hosting or Maintainence Cost is required !
 
 ![devlopr jekyll](https://github.com/sujaykundu777/devlopr-jekyll/blob/master/assets/img/screenshot.PNG?raw=true)
 
-devlopr uses Markdown Files to generate data like Blog Posts, Gallery, Shop Products etc. No external database is required.
+devlopr uses Markdown Files to generate data like Projects Posts, Gallery, Shop Products etc. No external database is required.
 
 
 ### Launch your Static Site using Devlopr in minutes :rocket:
@@ -203,7 +203,7 @@ We use codeQL and dependabot alerts for vulnerabality analysis & fixes.
 $ bundle audit
 ```
 
-### Deploy your devlopr-jekyll blog - One Click Deploy
+### Deploy your devlopr-jekyll projects - One Click Deploy
 
 [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/new/project?template=https://github.com/sujaykundu777/devlopr-jekyll)
 [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sujaykundu777/devlopr-jekyll)
@@ -230,18 +230,18 @@ This Project has actions to auto deploy jekyll to github pages and firebase. The
 #### Features :
 
 - Local CMS Admin Support using [Jekyll Admin](https://jekyll.github.io/jekyll-admin/)
-- Headless CMS Admin Support using [Netlify CMS](https://sujaykundu.com/blog/how-to-setup-netlify-cms-with-github-pages-hosted-jekyll-blog/)
+- Headless CMS Admin Support using [Netlify CMS](https://sujaykundu.com/projects/how-to-setup-netlify-cms-with-github-pages-hosted-jekyll-projects/)
 - Supports Latest [Jekyll 4.x](https://jekyllrb.com) and [Bundler](https://bundler.io)
 - Stylesheet built using Sass
 - Comments using [Hyvor](https://talk.hyvor.com/) and [Disqus](https://disqus.com/)
 - SEO-optimized
-- Real Time Search - [Algolia](https://sujaykundu.com/blog/adding-real-time-search-to-jekyll-site-using-algolia/)
-- Sell Stuff (Ecommerce) in your Blog using [Snipcart](https://snipcart.com/)
+- Real Time Search - [Algolia](https://sujaykundu.com/projects/adding-real-time-search-to-jekyll-site-using-algolia/)
+- Sell Stuff (Ecommerce) in your Projects using [Snipcart](https://snipcart.com/)
 - Send Newsletters using [Mailchimp](https://mailchimp.com/)
 - Contact Forms Support for [Getform](https://getform.io), [Formspree](https://formspree.io/)
 - Coding Activity using [Wakatime](https://wakatime.com/)
 - Hosting Support for [Github Pages](https://pages.github.com), [Netlify](https://netlify.com), [Vercel](https://vercel.com), [Heroku](https://heroku.com), [AWS Amplify](aws.amplify.com), [Firebase](https://firebase.com)
-- CI/CD Support using [Travis CI](https://sujaykundu.com/blog/deploy-jekyll-blog-using-github-pages-and-travis-ci/)
+- CI/CD Support using [Travis CI](https://sujaykundu.com/projects/deploy-jekyll-projects-using-github-pages-and-travis-ci/)
 
 #### Jekyll Admin
 You can easily manage the site locally using the Jekyll admin : [http://localhost:4000/admin](http://localhost:4000/admin)
@@ -266,11 +266,11 @@ git push
 
 Building the Image :
 
-`docker build -t my-devlopr-jekyll-blog .`
+`docker build -t my-devlopr-jekyll-projects .`
 
 Running the container :
 
-`docker run -d -p 4000:4000 -it --volume="$PWD:/srv/jekyll" --name "my_blog" my-devlopr-jekyll-blog:latest jekyll serve --watch`
+`docker run -d -p 4000:4000 -it --volume="$PWD:/srv/jekyll" --name "my_projects" my-devlopr-jekyll-projects:latest jekyll serve --watch`
 
 ## Using Docker Compose :
 
