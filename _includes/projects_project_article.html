@@ -17,18 +17,12 @@
       data-disqus-identifier="{{ page.url }}"
     ></span>
     <div class="project-language">
-      {% if project %}
-        {% assign languages = project.languages %}
-      {% else %}
-        {% assign languages = page.languages %}
-      {% endif %}
-        {% assign project_languages = page.languages | default: page.language | split: ',' %}
-        language:
-        {% for lang in languages %}
-          <a href="{{site.baseurl}}/projects/languages/{{lang|slugize}}">{{lang}}</a>
-          {% unless forloop.last %}&nbsp;
-          {% endunless %}
-        {% endfor %}
+      {% assign project_languages = page.languages | default: page.language | split: ',' %}
+      language:
+      {% for lang in project_languages %}
+      <a href="{{site.baseurl}}/projects/languages/{{lang|slugize}}">{{lang}}</a>
+      {% unless forloop.last %}&nbsp;{% endunless %}
+      {% endfor %}
     </div>
   </div>
 

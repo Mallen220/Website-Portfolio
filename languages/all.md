@@ -8,7 +8,7 @@ permalink: /projects/languages/
 
 <div id="languages">
 {% for language in site.languages %}
-  <div class="language-box" >
+    <div class="language-box" >
     {% capture language_name %}{{ language | first }}{% endcapture %}
     <div id="#{{ language_name | slugize }}"></div>
     <h4 class="language-head"><a href="{{ site.baseurl }}/projects/languages/{{ language_name }}">{{ language_name }}</a></h4>

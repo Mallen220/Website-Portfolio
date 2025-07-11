@@ -6,7 +6,7 @@ layout: default
 
 <div class="card">
     {% assign lang = page.title %}
-    {% assign projects = site.data.languages[lang] %}
+    {% assign projects = site.languages[lang] %}
     {% if projects %}
     <div class="card">
         {% for project in projects %}

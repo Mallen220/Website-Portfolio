@@ -38,7 +38,6 @@ languages.each do |lang, projects|
   languages[lang] = projects.sort_by { |p| p['date'] || Date.today }.reverse
 end
 
-# ✅ REMOVE the top-level 'languages' key here!
-File.write(LANGUAGE_FILE, languages.to_yaml.sub(/\A---\s*\n/, ''))
+File.write(LANGUAGE_FILE, { 'languages' => languages }.to_yaml.sub(/\A---\s*\n/, ''))
 
 puts "[language generator] Wrote language data to #{LANGUAGE_FILE}"

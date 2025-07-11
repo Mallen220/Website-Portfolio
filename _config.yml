@@ -231,12 +231,12 @@ sass:
 include:
   - _sass
   - _config.yml
-  - config.yml
   - _config_languages.yml
-
 
 exclude:
   - .sass-cache/
+  - generate_language_pages.rb
+  - generate_language_map.rb
   - .jekyll-cache/
   - gemfiles/
   - Gemfile
