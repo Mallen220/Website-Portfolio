@@ -12,6 +12,8 @@ permalink: /projects/source-finder/
 github_url: "https://github.com/Mallen220/Source-Finder"
 ---
 
+
+
 ## Source Finder
 
 **Project Description:**  
@@ -26,56 +28,29 @@ This Python script automates research for speech and debate competitions by scra
 - Voice-guided instructions
 - Scheduled research runs
 
+
 ### Technical Implementation
 
 **Core Functionality:**
 1. **Question Retrieval:**
-    - Accesses SpeechGeek.com's extemp questions
-    - Parses HTML to extract debate questions
-    - Cleans and formats questions for processing
+   - Accesses SpeechGeek.com's extemp questions
+   - Parses HTML to extract debate questions
+   - Cleans and formats questions for processing
 
 2. **Automated Research:**
-    - Performs Google searches for each question
-    - Opens relevant sources in Chrome
-    - Uses image recognition to navigate Prepd's UI
-
-   ```python
-   
-   def ImageSearchAndClick(Image_Name, OffSetX, OffsetY, Failsafe, MouseButton):
-       # Uses screen_search to locate UI elements
-       Variable_Name = Search(Image_Name)
-       Variable_Name = Variable_Name.imagesearch()
-       m.click(Variable_Name[0] + OffSetX, Variable_Name[1] + OffsetY, MouseButton)
-   
-   ```
+   - Performs Google searches for each question
+   - Opens relevant sources in Chrome
+   - Uses image recognition to navigate Prepd's UI
 
 3. **Categorization System:**
-    - Maintains topic-specific keyword libraries
-    - Automatically tags sources by category
-    - Supports both International (IX) and US Extemp (USX) categories
-
-   ```python
-   
-   Keywords = {
-       "IX": ["China", "Climate", "International Conflict"],
-       "USX": ["US Politics", "Immigration", "Supreme Court"]
-   }
-   
-   ```
+   - Maintains topic-specific keyword libraries
+   - Automatically tags sources by category
+   - Supports both International (IX) and US Extemp (USX) categories
 
 4. **Platform Integration:**
-    - Automated login workflow
-    - Source saving with proper tagging
-    - Scheduled research sessions
-
-   ```python
-   
-   def prepd_save():
-       m.click(prepd_locationx, prepd_locationy)  # Prepd extension
-       # Fills category field automatically
-       k.type_string(Keywords[0])
-   
-   ```
+   - Automated login workflow
+   - Source saving with proper tagging
+   - Scheduled research sessions
 
 **Technical Stack:**
 - **UI Automation:** `pymouse`, `pykeyboard`
@@ -84,37 +59,6 @@ This Python script automates research for speech and debate competitions by scra
 - **Clipboard Access:** `clipboard` for data transfer
 - **Text-to-Speech:** `pyttsx3` for audio instructions
 - **HTML Parsing:** Custom regex-based content extraction
-
-**Workflow Diagram:**
-
-```mermaid
-
-graph TD
-    A[Start] --> B{Fetch Questions<br>from SpeechGeek}
-    B --> C[Clean/Format Questions]
-    C --> D[Google Search]
-    D --> E[Open Sources in Chrome]
-    E --> F{Detect Prepd UI<br>via Image Recognition}
-    F --> G[Auto-Save to Category]
-    G --> H[Repeat for Next Source]
-    H --> I[Scheduled Execution]
-    
-```
-
-### Usage Example
-
-```python
-
-# Configure for US Extemp topics
-IX_USX = "USX"  
-
-# Get current debate questions
-get_questions()  
-
-# Start automated research
-search_and_save()
-
-```
 
 **Key Advantages:**
 1. Saves 10-15 hours/week of manual research
