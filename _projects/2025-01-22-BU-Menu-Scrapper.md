@@ -8,7 +8,7 @@ languages: ['python']
 thumbnail: /assets/img/projects/BUMenuScrapper.png
 keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll, devlopr-jekyll tutorial,best jekyll themes, multi languages and tags
 usemathjax: true
-permalink: /projects/source-finder/
+permalink: /projects/BU-Menu-Scrapper/
 github_url: "https://github.com/Mallen220/BUMenuScrapper"
 ---
 

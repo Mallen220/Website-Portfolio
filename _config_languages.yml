@@ -1,7 +1,10 @@
 languages:
   python:
+  - title: Learn Java for FTC
+    url: "/projects/Java-For-FTC/"
+    date: 2025-04-29
   - title: My first college project! BU Menu Scrapper.
-    url: "/projects/source-finder/"
+    url: "/projects/BU-Menu-Scrapper/"
     date: 2025-01-12
   - title: My first project! Source finder.
     url: "/projects/source-finder/"
