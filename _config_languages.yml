@@ -1,5 +1,8 @@
 languages:
   python:
+  - title: Tetris Machine Learning
+    url: "/projects/Tetris-ML/"
+    date: 2025-06-25
   - title: My first college project! BU Menu Scrapper.
     url: "/projects/BU-Menu-Scrapper/"
     date: 2025-01-12
@@ -9,6 +12,29 @@ languages:
   - title: My first project! Source finder.
     url: "/projects/source-finder/"
     date: 2021-02-28
+  - title: My first project! Source finder.
+    url: "/projects/source-finder/"
+    date: 2021-02-28
+  html:
+  - title: Team Broncobots Website
+    url: "/projects/team-broncobots/"
+    date: 2024-08-20
+  css:
+  - title: Team Broncobots Website
+    url: "/projects/team-broncobots/"
+    date: 2024-08-20
+  javascript:
+  - title: Team Broncobots Website
+    url: "/projects/team-broncobots/"
+    date: 2024-08-20
+  scss:
+  - title: Team Broncobots Website
+    url: "/projects/team-broncobots/"
+    date: 2024-08-20
+  ruby:
+  - title: Team Broncobots Website
+    url: "/projects/team-broncobots/"
+    date: 2024-08-20
   java:
   - title: Learn Java for FTC
     url: "/projects/Java-For-FTC/"
