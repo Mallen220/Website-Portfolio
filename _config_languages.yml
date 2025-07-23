@@ -1,4 +1,15 @@
 languages:
+  java:
+  - title: Learn Java for FTC
+    url: "/projects/Java-For-FTC/"
+    date: 2025-04-29
+  - title: Broncobots 2021 Robot
+    url: "/projects/robot-2021/"
+    date: 2021-03-26
+  frc sdk:
+  - title: Broncobots 2021 Robot
+    url: "/projects/robot-2021/"
+    date: 2021-03-26
   python:
   - title: Tetris Machine Learning
     url: "/projects/Tetris-ML/"
@@ -9,9 +20,6 @@ languages:
   - title: Smart Clicker (Previously Windows-Autoclicker)
     url: "/projects/Smart-Clicker/"
     date: 2024-08-21
-  - title: My first project! Source finder.
-    url: "/projects/source-finder/"
-    date: 2021-02-28
   - title: My first project! Source finder.
     url: "/projects/source-finder/"
     date: 2021-02-28
@@ -35,10 +43,6 @@ languages:
   - title: Team Broncobots Website
     url: "/projects/team-broncobots/"
     date: 2024-08-20
-  java:
-  - title: Learn Java for FTC
-    url: "/projects/Java-For-FTC/"
-    date: 2025-04-29
   ftc sdk:
   - title: Learn Java for FTC
     url: "/projects/Java-For-FTC/"
