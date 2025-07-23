@@ -3,10 +3,16 @@ languages:
   - title: Learn Java for FTC
     url: "/projects/Java-For-FTC/"
     date: 2025-04-29
+  - title: Broncobots 2022 Robot
+    url: "/projects/robot-2022/"
+    date: 2022-03-05
   - title: Broncobots 2021 Robot
     url: "/projects/robot-2021/"
     date: 2021-03-26
   frc sdk:
+  - title: Broncobots 2022 Robot
+    url: "/projects/robot-2022/"
+    date: 2022-03-05
   - title: Broncobots 2021 Robot
     url: "/projects/robot-2021/"
     date: 2021-03-26
