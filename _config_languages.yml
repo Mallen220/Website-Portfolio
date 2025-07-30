@@ -42,22 +42,37 @@ languages:
     url: "/projects/source-finder/"
     date: 2021-02-28
   html:
+  - title: Brookline Bots Website
+    url: "/projects/Brookline-Bots/"
+    date: 2025-03-21
   - title: Team Broncobots Website
     url: "/projects/team-broncobots/"
     date: 2024-08-20
   css:
+  - title: Brookline Bots Website
+    url: "/projects/Brookline-Bots/"
+    date: 2025-03-21
   - title: Team Broncobots Website
     url: "/projects/team-broncobots/"
     date: 2024-08-20
   javascript:
+  - title: Brookline Bots Website
+    url: "/projects/Brookline-Bots/"
+    date: 2025-03-21
   - title: Team Broncobots Website
     url: "/projects/team-broncobots/"
     date: 2024-08-20
   scss:
+  - title: Brookline Bots Website
+    url: "/projects/Brookline-Bots/"
+    date: 2025-03-21
   - title: Team Broncobots Website
     url: "/projects/team-broncobots/"
     date: 2024-08-20
   ruby:
+  - title: Brookline Bots Website
+    url: "/projects/Brookline-Bots/"
+    date: 2025-03-21
   - title: Team Broncobots Website
     url: "/projects/team-broncobots/"
     date: 2024-08-20
