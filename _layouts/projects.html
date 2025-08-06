@@ -6,7 +6,7 @@ layout: default
       <div class="col-lg-8">
               <ul>
                   <div class="row">
-                      {% for project in site.projects %}
+                      {% for project in site.projects reversed %}
                           <div class="card projects-project">
                               <img class="card-img-top" src="{{site.url}}{{site.baseurl}}{{ project.thumbnail }}" alt="{{ project.title }}">
                               <div class="card-body center">
