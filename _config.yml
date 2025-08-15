@@ -8,19 +8,18 @@ baseurl: "" # the subpath of your site, e.g. /projects
 
 # Navigation
 urls:
-    - text: Home
-      url: /
-    - text: About
-      url: /about
-    - text: Projects
-      url: /projects
-    - text: Gallery
-      url: /gallery
-    - text: Shop
-      url : /shop
+  - text: Home
+    url: /
+  - text: About
+    url: /about
+  - text: Projects
+    url: /projects
+  - text: Gallery
+    url: /gallery
+  - text: Shop
+    url: /shop
 #    - text: Contact
 #      url : /contact
-
 
 # Edit Author details (For multi authors check _data/authors.yml)
 
@@ -35,57 +34,56 @@ hero_cover_img: home_screen.jpg # replace this for changing homepage cover (eg. 
 
 # Experiences
 author_work_experiences:
-            - company_name: Tech Academy of Minnesota
-              company_logo: TechAcademy.jpg
-              company_url: https://www.techacademymn.com
-              designation: STEM Teacher
-              description: Teacher for Elementary school students in the Kansas City area. Taught students about STEM and how to build robots.
-              visibility: true
-            - company_name: Goodwill of Western MO & Eastern KS
-              company_logo: Goodwill.png
-              company_url: https://www.mokangoodwill.org/
-              designation: Ecommerce Photographer
-              description: Photographed and edited images of products for online sales.
-              visibility: true
-            - company_name: Flowers by Ranchview
-              company_logo: Transparent.png
-              company_url: https://ranchviewfloral.com/
-              designation: Driver
-              description: Delivered flowers to customers in the Kansas City area.
-              visibility: true
-
+  - company_name: Tech Academy of Minnesota
+    company_logo: TechAcademy.jpg
+    company_url: https://www.techacademymn.com
+    designation: STEM Teacher
+    description: Teacher for Elementary school students in the Kansas City area. Taught students about STEM and how to build robots.
+    visibility: true
+  - company_name: Goodwill of Western MO & Eastern KS
+    company_logo: Goodwill.png
+    company_url: https://www.mokangoodwill.org/
+    designation: Ecommerce Photographer
+    description: Photographed and edited images of products for online sales.
+    visibility: true
+  - company_name: Flowers by Ranchview
+    company_logo: Transparent.png
+    company_url: https://ranchviewfloral.com/
+    designation: Driver
+    description: Delivered flowers to customers in the Kansas City area.
+    visibility: true
 
 # Education
 author_education_details:
-              - college_logo: Boston_University.svg
-                college_name: Boston University
-                college_url: https://www.bu.edu/
-                college_degree: Computer Science
-                description: Bachelor's degree
-                visibility: true
-              - college_logo: LSNHS.png
-                college_name: Lee's Summit North High School
-                college_url: https://lsnhs.lsr7.org/
-                college_degree: High School Diploma
-                description:
-                visibility: true
+  - college_logo: Boston_University.svg
+    college_name: Boston University
+    college_url: https://www.bu.edu/
+    college_degree: Computer Science
+    description: Bachelor's degree
+    visibility: true
+  - college_logo: LSNHS.png
+    college_name: Lee's Summit North High School
+    college_url: https://lsnhs.lsr7.org/
+    college_degree: High School Diploma
+    description:
+    visibility: true
 
 # Projects
 author_project_details:
-              - project_thumbnail: gamershub.png
-                project_title: Gamers Hub
-                project_description: A Platform built for Gamers and Game Devs
-                project_url: https://gamershub.in
-                visibility: true
-              - project_thumbnail: hack4r.PNG
-                project_title: Hack4r
-                project_description: A Platform built for Hackers and Penetration Testers
-                project_url: https://hack4r.com
-                visibility: true
+  - project_thumbnail: gamershub.png
+    project_title: Gamers Hub
+    project_description: A Platform built for Gamers and Game Devs
+    project_url: https://gamershub.in
+    visibility: true
+  - project_thumbnail: hack4r.PNG
+    project_title: Hack4r
+    project_description: A Platform built for Hackers and Penetration Testers
+    project_url: https://hack4r.com
+    visibility: true
 
 # social links
 #twitter_username: xplor4r
-github_username:  Mallen220
+github_username: Mallen220
 #instagram_username: xplor4r
 # facebook_username: johndoe
 linkedin_username: matthew-allen-frc1987ftc17218
@@ -157,7 +155,7 @@ defaults:
     values:
       permalink: /:path/:basename:output_ext
   - scope:
-      path: 'assets/**'
+      path: "assets/**"
     values:
       sitemap: false
 
@@ -170,18 +168,17 @@ plugins:
   - jekyll-feed
 
   # jekyll admin is causing issues with github pages, so it's disabled by default
-  # - jekyll-admin 
+  # - jekyll-admin
 
 # Jekyll Admin Config
 # jekyll_admin:
-  # hidden_links:
-  #   - posts
-  #   - pages
-  #   - staticfiles
-  #   - datafiles
-  #   - configuration
-  # homepage: "posts"
-
+# hidden_links:
+#   - posts
+#   - pages
+#   - staticfiles
+#   - datafiles
+#   - configuration
+# homepage: "posts"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -243,6 +240,5 @@ exclude:
   - assets/bower_components/lightgallery/test/lightgallery.html
   - assets/bower_components/masonry-layout/README.md
   - assets/bower_components/imagesloaded/README.md
-
 
 destination: ./_site

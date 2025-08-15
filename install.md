@@ -14,14 +14,13 @@ If you aren’t familiar with Jekyll yet, you should know that it is a static si
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cXBEfpn0qrg?rel=0&amp;controls=0&amp;showinfo=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 ### Steps to create your projects using devlopr-jekyll and Host using Github Pages :
 
->  **Step 1.**  Fork the repo - [click here](https://github.com/sujaykundu777/devlopr-jekyll/fork)
+> **Step 1.** Fork the repo - [click here](https://github.com/sujaykundu777/devlopr-jekyll/fork)
 
 ![Devlopr Jekyll Repo](/assets/img/projects/fork1.PNG){:class="img-fluid"}
 
-> **Step 2.** Use **your-github-username.github.io** as the new repo  ( Replace your-github-username with yours). Remember if you use the name other than your-github-username.github.io , your projects will be built using gh-pages branch.
+> **Step 2.** Use **your-github-username.github.io** as the new repo ( Replace your-github-username with yours). Remember if you use the name other than your-github-username.github.io , your projects will be built using gh-pages branch.
 
 ![Devlopr Jekyll Repo](/assets/img/projects/fork2.PNG){:class="img-fluid"}
 
@@ -41,12 +40,12 @@ If you aren’t familiar with Jekyll yet, you should know that it is a static si
  $ code .
 ```
 
-> **Step 4.** Open the files using VSCode and edit _config.yml and edit with your details:
+> **Step 4.** Open the files using VSCode and edit \_config.yml and edit with your details:
 
-- _config.yml file - replace with your own details
-- _projects - Add your projectsprojects here
-- _includes - You can replace the contents of the files with your data. (contains widgets)
-- _assets/img - Add all your images here
+- \_config.yml file - replace with your own details
+- \_projects - Add your projectsprojects here
+- \_includes - You can replace the contents of the files with your data. (contains widgets)
+- \_assets/img - Add all your images here
 
 ![Devlopr Jekyll Repo](/assets/img/projects/fork34.PNG){:class="img-fluid"}
 
@@ -66,6 +65,7 @@ For ruby :
 $ ruby -v
 ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]
 ```
+
 For bundler :
 
 ```bash
@@ -73,13 +73,15 @@ $ gem install bundler
 $ bundler -v
 Bundler version 2.2.29
 ```
+
 Add jekyll :
 
 ```bash
 $ bundle update
 $ bundle add jekyll
 ```
- This command will add the Jekyll gem to our Gemfile and install it to the ./vendor/bundle/ folder.
+
+This command will add the Jekyll gem to our Gemfile and install it to the ./vendor/bundle/ folder.
 
 You can check the jekyll version
 
@@ -100,6 +102,7 @@ $ bundle install
 ```bash
 $ bundle exec jekyll serve --watch
 ```
+
 or you can also serve using :
 
 ```bash
@@ -110,10 +113,9 @@ Visit [http://localhost:4000](http://localhost:4000) for development server
 
 ![Devlopr Jekyll Repo](/assets/img/projects/fork41.PNG){:class="img-fluid"}
 
-
 ### Adding Content
 
-Start populating your projects by adding your .md files in _projects. devlopr-jekyll already has a few examples.
+Start populating your projects by adding your .md files in \_projects. devlopr-jekyll already has a few examples.
 
 #### YAML Project Example:
 
@@ -122,14 +124,12 @@ Start populating your projects by adding your .md files in _projects. devlopr-je
 layout: post
 title: Sample Project
 author: MatthewAllen
-date: '2019-05-21 14:35:23 +0530'
+date: "2019-05-21 14:35:23 +0530"
 languages: jekyll
 summary: This is the summary for the sample project
 thumbnail: sample.png
 ---
-
 Hi ! This is sample project.
-
 ```
 
 #### YAML Page Example:
@@ -140,7 +140,6 @@ layout: page
 title: Sample Page
 permalink: /sample-page/
 ---
-
 Hi ! This is sample page.
 ```
 
@@ -171,4 +170,3 @@ Visit your Github Repo settings ! Enable master branch as Github Pages Branch :
 > Congrats ! On your new shining Projects !
 
 You can visit the projects using [http://your-github-username.github.io](http://your-github-username.github.io).
-

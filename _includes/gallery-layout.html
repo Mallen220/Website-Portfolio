@@ -1,18 +1,23 @@
 <!-- Masonry Gallery Layout -->
 <div class="gallery-container">
-  <div class="gallery-grid" id="gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}">
+  <div
+    class="gallery-grid"
+    id="gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}"
+  >
     {% for picture in include.gallery.pictures %}
     <div class="gallery-item">
-      <a href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.original }}"
-         class="gallery-link"
-         data-sub-html="<h4>{{ picture.title | escape }}</h4>{% if picture.caption %}<p>{{ picture.caption | escape }}</p>{% endif %}">
+      <a
+        href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.original }}"
+        class="gallery-link"
+        data-sub-html="<h4>{{ picture.title | escape }}</h4>{% if picture.caption %}<p>{{ picture.caption | escape }}</p>{% endif %}"
+      >
         <img
-                loading="lazy"
-                class="gallery-thumbnail"
-                alt="{{ picture.title }}"
-                src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.thumbnail }}"
-                width="{{ picture.thumbnail_width | default: 300 }}"
-                height="{{ picture.thumbnail_height | default: 300 }}"
+          loading="lazy"
+          class="gallery-thumbnail"
+          alt="{{ picture.title }}"
+          src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.thumbnail }}"
+          width="{{ picture.thumbnail_width | default: 300 }}"
+          height="{{ picture.thumbnail_height | default: 300 }}"
         />
       </a>
     </div>
@@ -22,28 +27,29 @@
 
 <!-- Gallery Initialization -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Initialize Masonry
-    const grid = document.querySelector('.gallery-grid');
+    const grid = document.querySelector(".gallery-grid");
     if (grid) {
       const masonry = new Masonry(grid, {
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-item',
+        itemSelector: ".gallery-item",
+        columnWidth: ".gallery-item",
         gutter: 15,
         percentPosition: true,
-        transitionDuration: '0.3s'
+        transitionDuration: "0.3s",
       });
 
       // Relayout after images load
-      imagesLoaded(grid).on('progress', function() {
+      imagesLoaded(grid).on("progress", function () {
         masonry.layout();
       });
     }
 
     // Initialize lightGallery
-    const galleryId = "gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}";
+    const galleryId =
+      "gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}";
     lightGallery(document.getElementById(galleryId), {
-      selector: '.gallery-link',
+      selector: ".gallery-link",
       download: false,
       thumbnail: true,
       animateThumb: true,
@@ -51,8 +57,8 @@
       actualSize: false,
       escKey: true,
       keyPress: true,
-      mode: 'lg-slide',
-      speed: 300
+      mode: "lg-slide",
+      speed: 300,
     });
   });
 </script>

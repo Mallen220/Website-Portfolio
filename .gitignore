@@ -5,3 +5,4 @@ _site
 assets/bower_components
 .jekyll-metadata
 .DS_Store
+node_modules

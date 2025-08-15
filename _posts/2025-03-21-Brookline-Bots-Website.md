@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Brookline Bots Website"
+title: "Brookline Bots Website"
 summary: "Mentored Brookline Bots (FTC 17218) in creating their website at brooklinebots.org"
 author: MatthewAllen
-date: '2025-03-21 0:00:00 +0530'
-category: ['HTML', 'CSS', 'JavaScript', 'SCSS', 'Ruby']
+date: "2025-03-21 0:00:00 +0530"
+category: ["HTML", "CSS", "JavaScript", "SCSS", "Ruby"]
 thumbnail: /assets/img/projects/BrooklineBotsWebsite.png
 keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll, devlopr-jekyll tutorial,best jekyll themes, multi languages and tags
 usemathjax: true
@@ -16,44 +16,48 @@ pagination:
 ---
 
 ### Project Description
+
 The **Brookline Bots (FTC Team 17218)** website is a dynamic platform showcasing the team’s activities, achievements, and community impact. Built by students under my mentorship, it mirrors the structure of the FRC Team 1987 website I developed but is tailored to the needs of an FTC team. The site highlights the team’s mission, sponsors, summer camps, awards, and members, while promoting STEM outreach in Brookline, Massachusetts. Designed for scalability and ease of maintenance, it uses Jekyll for static site generation and integrates modern UI/UX principles.
 
 ---
 
 ### Key Features
+
 1. **Responsive Layout**
-    - Adapts seamlessly to mobile/desktop using Bulma CSS framework.
-    - Hero sections with darkening overlays for visual impact.
+   - Adapts seamlessly to mobile/desktop using Bulma CSS framework.
+   - Hero sections with darkening overlays for visual impact.
 2. **Interactive Elements**
-    - Animated buttons with hover effects (e.g., "Team Focus," "Mission Statement").
-    - JavaScript-powered content toggles for streamlined information display.
+   - Animated buttons with hover effects (e.g., "Team Focus," "Mission Statement").
+   - JavaScript-powered content toggles for streamlined information display.
 3. **Dynamic Galleries**
-    - Branding assets, robot designs, and camp manuals organized in YAML-driven galleries.
-    - Download links for resources (logos, camp guides).
+   - Branding assets, robot designs, and camp manuals organized in YAML-driven galleries.
+   - Download links for resources (logos, camp guides).
 4. **Summer Camps Portal**
-    - Dedicated section for partner camps (Penguin Coding School, The Robo Hub).
-    - Flyer previews, schedules, discount codes, and registration links.
+   - Dedicated section for partner camps (Penguin Coding School, The Robo Hub).
+   - Flyer previews, schedules, discount codes, and registration links.
 5. **Sponsorship Integration**
-    - Tax-deductible donation instructions with check/online options.
-    - Sponsor shoutouts with customizable layouts.
+   - Tax-deductible donation instructions with check/online options.
+   - Sponsor shoutouts with customizable layouts.
 6. **Awards Timeline**
-    - Chronological display of competition achievements via YAML data.
+   - Chronological display of competition achievements via YAML data.
 7. **Team Roster**
-    - Member profiles with roles, images, and bios (captains, mentors, coaches).
+   - Member profiles with roles, images, and bios (captains, mentors, coaches).
 
 ---
 
 ### Technical Implementation
+
 #### Core Functionality
+
 - **Content Management**
-    - Jekyll templates reuse layouts (e.g., `page.html`, `default.html`) across sections.
-    - YAML files (`awards.yml`, `team.yml`, `navigation.yml`) drive dynamic content.
+  - Jekyll templates reuse layouts (e.g., `page.html`, `default.html`) across sections.
+  - YAML files (`awards.yml`, `team.yml`, `navigation.yml`) drive dynamic content.
 - **Frontend Interactivity**
-    - Custom JavaScript toggles (e.g., homepage mission/focus/history buttons).
-    - CSS animations (image zoom, button hover effects).
+  - Custom JavaScript toggles (e.g., homepage mission/focus/history buttons).
+  - CSS animations (image zoom, button hover effects).
 - **Asset Optimization**
-    - Image compression with responsive breakpoints (`width="650" height="auto"`).
-    - SVG logos for scalability.
+  - Image compression with responsive breakpoints (`width="650" height="auto"`).
+  - SVG logos for scalability.
 
 ---
 
@@ -90,11 +94,10 @@ The **Brookline Bots (FTC Team 17218)** website is a dynamic platform showcasing
   </tbody>
 </table>
 
-
 ---
 
-
 #### Key Advantages
+
 - **Low Maintenance**  
   Non-technical team members update content via Markdown/YAML—no code changes needed.
 - **Performance**  
@@ -105,6 +108,7 @@ The **Brookline Bots (FTC Team 17218)** website is a dynamic platform showcasing
 ---
 
 ### Setup Instructions
+
 1. **Prerequisites**: Ruby, Jekyll, Bundler.
 2. Clone the repository:
    git clone https://github.com/brookline-bots/website.git
@@ -117,6 +121,7 @@ The **Brookline Bots (FTC Team 17218)** website is a dynamic platform showcasing
 ---
 
 ### Special Notes & Considerations
+
 - **Mentorship Impact**  
   Guided high school students in version control (Git), Jekyll architecture, and UI design principles. Emphasized collaborative workflows.
 - **Accessibility**  

@@ -5,56 +5,58 @@ permalink: /gallery/
 ---
 
 <div class="gallery-index">
-    <div class="row">
-        {% assign count = 0 %}
-        {% for gallery in site.data.galleries.overview %}
-        <div class="col-md-4 col-lg-3 mb-4">
-            <div class="gallery-card card h-100">
-                <a href="{{ site.url }}{{ site.baseurl }}/gallery/{{ gallery.directory }}.html" class="gallery-card-link">
-                    <img
-                            loading="lazy"
-                            class="card-img-top"
-                            alt="{{ gallery.title }}"
-                            src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{% if gallery.picture_path %}{{ gallery.picture_path }}{% else %}{{ gallery.directory }}{% endif %}/{{ gallery.preview.thumbnail }}"
-                    />
-                    <div class="card-body">
-                        <h5 class="card-title">{{ gallery.title }}</h5>
-                        {% if gallery.image_count %}
-                        <p class="card-text">{{ gallery.image_count }} photos</p>
-                        {% endif %}
-                    </div>
-                </a>
-            </div>
-        </div>
-        {% endfor %}
+  <div class="row">
+    {% assign count = 0 %} {% for gallery in site.data.galleries.overview %}
+    <div class="col-md-4 col-lg-3 mb-4">
+      <div class="gallery-card card h-100">
+        <a
+          href="{{ site.url }}{{ site.baseurl }}/gallery/{{ gallery.directory }}.html"
+          class="gallery-card-link"
+        >
+          <img
+            loading="lazy"
+            class="card-img-top"
+            alt="{{ gallery.title }}"
+            src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{% if gallery.picture_path %}{{ gallery.picture_path }}{% else %}{{ gallery.directory }}{% endif %}/{{ gallery.preview.thumbnail }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ gallery.title }}</h5>
+            {% if gallery.image_count %}
+            <p class="card-text">{{ gallery.image_count }} photos</p>
+            {% endif %}
+          </div>
+        </a>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
 
 <style>
-    .gallery-card {
-        transition: transform 0.3s ease;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+  .gallery-card {
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-    .gallery-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
+  .gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
 
-    .gallery-card-link {
-        color: inherit;
-        text-decoration: none;
-    }
+  .gallery-card-link {
+    color: inherit;
+    text-decoration: none;
+  }
 
-    .gallery-card .card-img-top {
-        height: 200px;
-        object-fit: cover;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
+  .gallery-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 
-    .gallery-card .card-body {
-        padding: 1.25rem;
-    }
+  .gallery-card .card-body {
+    padding: 1.25rem;
+  }
 </style>

@@ -1,21 +1,19 @@
 ---
 layout: post
-title:  "My first project! Source finder."
+title: "My first project! Source finder."
 summary: "Scrapes the internet to find sources related to a topic."
 author: MatthewAllen
-date: '2021-02-28 0:00:00 +0530'
-category: ['Python']
+date: "2021-02-28 0:00:00 +0530"
+category: ["Python"]
 thumbnail: /assets/img/projects/SourceFinder.png
 keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll, devlopr-jekyll tutorial,best jekyll themes, multi languages and tags
 usemathjax: true
 permalink: /projects/source-finder/
 github_url: "https://github.com/Mallen220/Source-Finder"
 pagination:
-   enabled: true
-   collection: projects
+  enabled: true
+  collection: projects
 ---
-
-
 
 ## Source Finder
 
@@ -23,6 +21,7 @@ pagination:
 This Python script automates research for speech and debate competitions by scraping sources from the web and organizing them in Prepd (a debate preparation platform). It intelligently categorizes sources by topic while handling the entire workflow from question retrieval to source organization.
 
 **Key Features:**
+
 - Automated question retrieval from SpeechGeek.com
 - Google search integration for source discovery
 - Intelligent categorization using custom keywords
@@ -31,10 +30,10 @@ This Python script automates research for speech and debate competitions by scra
 - Voice-guided instructions
 - Scheduled research runs
 
-
 ### Technical Implementation
 
 **Core Functionality:**
+
 1. **Question Retrieval:**
    - Accesses SpeechGeek.com's extemp questions
    - Parses HTML to extract debate questions
@@ -56,6 +55,7 @@ This Python script automates research for speech and debate competitions by scra
    - Scheduled research sessions
 
 **Technical Stack:**
+
 - **UI Automation:** `pymouse`, `pykeyboard`
 - **Web Scraping:** `googlesearch`, `webbrowser`
 - **Computer Vision:** `screen_search` for button detection
@@ -64,6 +64,7 @@ This Python script automates research for speech and debate competitions by scra
 - **HTML Parsing:** Custom regex-based content extraction
 
 **Key Advantages:**
+
 1. Saves 10-15 hours/week of manual research
 2. Ensures consistent source categorization
 3. Voice-guided setup for new users
@@ -71,6 +72,7 @@ This Python script automates research for speech and debate competitions by scra
 5. Customizable search parameters
 
 **Setup Instructions:**
+
 1. Install requirements:  
    `pip install pymouse pykeyboard googlesearch pyttsx3 clipboard screen_search`
 2. Configure Chrome path in script

@@ -5,24 +5,27 @@ layout: default
 {% include gallery_breadcrumb.html %}
 
 <div class="gallery-page">
-        <div class="container">
-                <div class="row">
-                        <div class="col-12">
-                                <div class="gallery-header">
-                                        <h1>{{ page.title }}</h1>
-                                        {% if page.description %}
-                                        <p class="gallery-description">{{ page.description }}</p>
-                                        {% endif %}
-                                </div>
-
-                                {{ content }}
-                        </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="gallery-header">
+          <h1>{{ page.title }}</h1>
+          {% if page.description %}
+          <p class="gallery-description">{{ page.description }}</p>
+          {% endif %}
         </div>
+
+        {{ content }}
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Include necessary libraries -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery-bundle.min.css"
+  rel="stylesheet"
+/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
@@ -30,61 +33,63 @@ layout: default
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lg-thumbnail/2.2.0/lg-thumbnail.min.js"></script>
 
 <style>
-        /* Gallery Styles */
-        .gallery-container {
-                padding: 20px 0;
-        }
+  /* Gallery Styles */
+  .gallery-container {
+    padding: 20px 0;
+  }
 
-        .gallery-grid {
-                margin: 0 auto;
-        }
+  .gallery-grid {
+    margin: 0 auto;
+  }
 
-        .gallery-item {
-                margin-bottom: 15px;
-                break-inside: avoid;
-                position: relative;
-        }
+  .gallery-item {
+    margin-bottom: 15px;
+    break-inside: avoid;
+    position: relative;
+  }
 
-        .gallery-thumbnail {
-                width: 100%;
-                height: auto;
-                border-radius: 8px;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                background-color: #f5f5f5;
-        }
+  .gallery-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    background-color: #f5f5f5;
+  }
 
-        .gallery-link:hover .gallery-thumbnail {
-                transform: scale(1.02);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+  .gallery-link:hover .gallery-thumbnail {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
 
-        .gallery-header {
-                margin-bottom: 30px;
-                text-align: center;
-        }
+  .gallery-header {
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
-        .gallery-description {
-                color: #666;
-                max-width: 800px;
-                margin: 0 auto;
-        }
+  .gallery-description {
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-        @media (min-width: 768px) {
-                .gallery-grid {
-                        column-count: 2;
-                        column-gap: 15px;
-                }
-        }
+  @media (min-width: 768px) {
+    .gallery-grid {
+      column-count: 2;
+      column-gap: 15px;
+    }
+  }
 
-        @media (min-width: 992px) {
-                .gallery-grid {
-                        column-count: 3;
-                }
-        }
+  @media (min-width: 992px) {
+    .gallery-grid {
+      column-count: 3;
+    }
+  }
 
-        @media (min-width: 1200px) {
-                .gallery-grid {
-                        column-count: 4;
-                }
-        }
+  @media (min-width: 1200px) {
+    .gallery-grid {
+      column-count: 4;
+    }
+  }
 </style>
