@@ -1,21 +1,58 @@
- <!-- Single Gallery -->
-  <div class="col-lg-12">
-    <div id="imageGallery{% if include.id_number %}-{{ include.id_number }}{% endif %}">
-      <div id="gallery-sizer{% if include.id_number %}-{{ include.id_number }}{% endif %}"></div>
-      {% for picture in include.gallery.pictures %}
-        <a href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.original }}"
-        data-responsive="{% for size in picture.sizes %} {{ site.url}}{{ site.baseurl }}/assets/gallery/{{ include.gallery.picture_path }}/{{ size }}{% endfor %}" class="image"
-        {% if picture.title %} data-sub-html="<div class='lg-toolbar caption'><h4>{{ picture.title | escape }}</h4>{% if picture.caption %}<p>{{ picture.caption | escape }}</p>{% endif %}</div>"{% endif %}>
-          <img alt="{{ picture.title }}" class="img-thumbnail" src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.thumbnail }}" />
-        </a>
-      {% endfor %}
-      </div>
+<!-- Masonry Gallery Layout -->
+<div class="gallery-container">
+  <div class="gallery-grid" id="gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}">
+    {% for picture in include.gallery.pictures %}
+    <div class="gallery-item">
+      <a href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.original }}"
+         class="gallery-link"
+         data-sub-html="<h4>{{ picture.title | escape }}</h4>{% if picture.caption %}<p>{{ picture.caption | escape }}</p>{% endif %}">
+        <img
+                loading="lazy"
+                class="gallery-thumbnail"
+                alt="{{ picture.title }}"
+                src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.thumbnail }}"
+                width="{{ picture.thumbnail_width | default: 300 }}"
+                height="{{ picture.thumbnail_height | default: 300 }}"
+        />
+      </a>
+    </div>
+    {% endfor %}
   </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#imageGallery").lightGallery({
-          thumbnail: false,
-          selector: '.image'
-        });
+</div>
+
+<!-- Gallery Initialization -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Masonry
+    const grid = document.querySelector('.gallery-grid');
+    if (grid) {
+      const masonry = new Masonry(grid, {
+        itemSelector: '.gallery-item',
+        columnWidth: '.gallery-item',
+        gutter: 15,
+        percentPosition: true,
+        transitionDuration: '0.3s'
+      });
+
+      // Relayout after images load
+      imagesLoaded(grid).on('progress', function() {
+        masonry.layout();
+      });
+    }
+
+    // Initialize lightGallery
+    const galleryId = "gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}";
+    lightGallery(document.getElementById(galleryId), {
+      selector: '.gallery-link',
+      download: false,
+      thumbnail: true,
+      animateThumb: true,
+      showThumbByDefault: true,
+      actualSize: false,
+      escKey: true,
+      keyPress: true,
+      mode: 'lg-slide',
+      speed: 300
     });
+  });
 </script>
