@@ -1,10 +1,10 @@
 ---
-layout: project
+layout: post
 title:  "My first college project! BU Menu Scrapper."
 summary: "Scrapes the BU Menu to find the likely favorite food for a given day."
 author: MatthewAllen
 date: '2025-01-12 0:00:00 +0530'
-languages: ['python']
+category: ['Python']
 thumbnail: /assets/img/projects/BUMenuScrapper.png
 keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll, devlopr-jekyll tutorial,best jekyll themes, multi languages and tags
 usemathjax: true

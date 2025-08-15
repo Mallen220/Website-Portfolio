@@ -1,14 +1,14 @@
 ---
 layout: page
 title: Rust
-permalink: /projects/languages/rust/
+permalink: /projects/languages/Rust/
 ---
 
 <h5> Projects by Language : {{ page.title }} </h5>
 
 <div class="card">
-{% for project in site.languages.rust %}
-  <li class="language-project"><span>{{ project.date | date_to_string }}</span> &nbsp; <a href="{{ project.url }}">{{ project.title }}</a></li>
+{% for post in site.categories.Rust %}
+ <li class="category-posts"><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 
 </div>

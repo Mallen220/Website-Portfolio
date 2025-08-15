@@ -1,8 +1,0 @@
-<div class="project-language">
-    {% for lang in page.languages %}
-    {% assign lang_slug = lang | downcase | replace: " ", "-" %}
-    <a href="{{ site.baseurl }}/projects/languages/{{ lang_slug }}/" class="badge bg-secondary">
-        {{ lang }}
-    </a>
-    {% endfor %}
-</div>

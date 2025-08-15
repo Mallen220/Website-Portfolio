@@ -1,10 +1,10 @@
 ---
-layout: project
+layout: post
 title:  "My first project! Source finder."
 summary: "Scrapes the internet to find sources related to a topic."
 author: MatthewAllen
 date: '2021-02-28 0:00:00 +0530'
-languages: ['python']
+category: ['Python']
 thumbnail: /assets/img/projects/SourceFinder.png
 keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll, devlopr-jekyll tutorial,best jekyll themes, multi languages and tags
 usemathjax: true

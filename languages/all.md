@@ -6,16 +6,16 @@ permalink: /projects/languages/
 
 <h3>  {{ page.title }} </h3>
 
-<div id="languages">
-{% for language in site.languages %}
-    <div class="language-box" >
-    {% capture language_name %}{{ language | first }}{% endcapture %}
-    <div id="#{{ language_name | slugize }}"></div>
-    <h4 class="language-head"><a href="{{ site.baseurl }}/projects/languages/{{ language_name }}">{{ language_name }}</a></h4>
-    <a name="{{ language_name | slugize }}"></a>
-     {% for project in site.languages[language_name] %}
+<div id="categories">
+{% for category in site.categories %}
+  <div class="category-box" >
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    <div id="#{{ category_name | slugize }}"></div>
+    <h4 class="category-head"><a href="{{ site.baseurl }}/projects/languages/{{ category_name }}">{{ category_name }}</a></h4>
+    <a name="{{ category_name | slugize }}"></a>
+     {% for post in site.categories[category_name] %}
     <article class="center">
-      <h6 ><a href="{{ site.baseurl }}{{ project.url }}">{{project.title}}</a></h6>
+      <h6 ><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h6>
     </article>
 
 

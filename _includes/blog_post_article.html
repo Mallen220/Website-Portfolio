@@ -1,0 +1,67 @@
+<article class="card" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="card-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+    {% if page.summary %}
+    <h4 class="post-meta">{{ page.summary }}</h4>
+    {% endif %}
+    <p class="post-summary">
+      Posted by :
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">
+          <a href="{{ '/posts/authors/' | append: page.author | relative_url }}">Matthew Allen</a>
+        </span>
+      </span>
+      on
+      <time datetime="{{ page.date }}" itemprop="datePublished">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+    </p>
+
+    <span class="disqus-comment-count" data-disqus-identifier="{{ page.url }}"></span>
+
+    {% assign categories = page.categories | default: '' %}
+    {% if categories != '' %}
+    <div class="post-categories">
+      Languages:
+      {% for category in categories %}
+      <a href="{{ '/projects/languages/' | append: category | slugize | relative_url }}/">{{ category }}</a>{% unless forloop.last %}&nbsp;{% endunless %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="card-body" itemprop="articleBody">
+    {% if page.thumbnail %}
+    <img class="card-img-top" src="{{ page.thumbnail | relative_url }}" alt="{{ page.title }}">
+    <br /><br />
+    {% endif %}
+    {{ content }}
+    <br />
+    {%- include share_page.html -%}
+    {% include author.html %}
+  </div>
+
+  <div class="comments">
+    <script src="https://giscus.app/client.js"
+            data-repo="Mallen220/Website-Portfolio"
+            data-repo-id="R_kgDOPJyHNw"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOPJyHN84Cs1hr"
+            data-mapping="pathname"
+            data-strict="1"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="preferred_color_scheme"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  {%- if site.hyvor_talk_website_id -%}
+  <div class="comments">
+    {%- include hyvor_comments.html -%}
+  </div>
+  {%- endif -%}
+</article>

@@ -124,20 +124,10 @@ show_author_work_experiences: true
 show_author_education_details: true
 show_author_project_details: true
 
-# pagination ofprojects
-pagination:
-  enabled: true
-  collection: projects
-  per_page: 6
-  sort_field: 'date'
-  sort_reverse: true
-  permalink: "/projects/page/:num/"
-
-#pagination:
-#  enabled: true
-#  collection: projects
-#  per_page: 4
-#  permalink: "/projects/page/:num/"
+# pagination of posts
+paginate: 4
+per_page: 4
+paginate_path: "/projects/page/:num/"
 
 # minify
 # compress_html:
@@ -147,29 +137,25 @@ pagination:
 #   ignore:
 #     envs: ['development']
 
-collections:
-  projects:
-    output: true
-    permalink: /projects/:path/
-    sort_by: date
+# Archives
+# jekyll-archives:
+#   enabled:
+#     - categories
+#   layout: archive
+#   permalinks:
+#     category: '/category/:name/'
 
+collections:
+  products:
+    output: true
+  authors:
+    output: true
 
 defaults:
-  - scope:
-      path: ""
-      type: projects
-    values:
-      layout: project
   - scope:
       path: "gallery"
     values:
       permalink: /:path/:basename:output_ext
-  - scope:
-      path: ""
-      type: authors
-    values:
-      layout: author
-      permalink: /projects/authors/:slug
   - scope:
       path: 'assets/**'
     values:
@@ -177,16 +163,11 @@ defaults:
 
 # Build settings
 plugins:
-  - jekyll-paginate-v2
+  - jekyll-paginate
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
-  - language_pages_generator
-
-whitelist:
-  - language_pages_generator
-
 
   # jekyll admin is causing issues with github pages, so it's disabled by default
   # - jekyll-admin 
@@ -194,12 +175,12 @@ whitelist:
 # Jekyll Admin Config
 # jekyll_admin:
   # hidden_links:
-  #   -projects
+  #   - posts
   #   - pages
   #   - staticfiles
   #   - datafiles
   #   - configuration
-  # homepage: "projects"
+  # homepage: "posts"
 
 
 # Exclude from processing.

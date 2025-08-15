@@ -119,7 +119,7 @@ Start populating your projects by adding your .md files in _projects. devlopr-je
 
 ```yml
 ---
-layout: project
+layout: post
 title: Sample Project
 author: MatthewAllen
 date: '2019-05-21 14:35:23 +0530'
