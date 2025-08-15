@@ -10,6 +10,9 @@ keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll
 usemathjax: true
 permalink: /projects/Smart-Clicker/
 github_url: "https://github.com/Mallen220/Windows-AutoClicker"
+pagination:
+   enabled: true
+   collection: projects
 ---
 
 ### Smart Clicker (Previously Windows-Autoclicker)

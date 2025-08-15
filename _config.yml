@@ -125,14 +125,19 @@ show_author_education_details: true
 show_author_project_details: true
 
 # pagination ofprojects
-paginate: 4
 pagination:
   enabled: true
   collection: projects
-  per_page: 4
+  per_page: 6
+  sort_field: 'date'
+  sort_reverse: true
   permalink: "/projects/page/:num/"
 
-
+#pagination:
+#  enabled: true
+#  collection: projects
+#  per_page: 4
+#  permalink: "/projects/page/:num/"
 
 # minify
 # compress_html:
@@ -142,44 +147,30 @@ pagination:
 #   ignore:
 #     envs: ['development']
 
-# Archives
-# jekyll-archives:
-#   enabled:
-#     - languages
-#   layout: archive
-#   permalinks:
-#     languages: '/language/:name/'
-
-
-#  Python:
-#    - title: "Tetris AI"
-#      url: /projects/tetris
-#  sample_language:
-#    - title: "My Sample Project"
-#      url: /projects/sample
-
-
 collections:
   projects:
     output: true
     permalink: /projects/:path/
+    sort_by: date
 
 
 defaults:
-  -
-    scope:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+  - scope:
       path: "gallery"
     values:
       permalink: /:path/:basename:output_ext
-  -
-    scope:
+  - scope:
       path: ""
       type: authors
     values:
       layout: author
       permalink: /projects/authors/:slug
-  -
-    scope:
+  - scope:
       path: 'assets/**'
     values:
       sitemap: false

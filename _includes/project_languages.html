@@ -1,10 +1,8 @@
-
-{% for tag in site.languages %}
-    {% capture tag_name %}{{ tag | first }}{% endcapture %}
-    <div id="#{{ tag_name | slugize }}"></div>
-    <li class="tag-head">
-        <a href="{{ site.baseurl }}/projects/languages/{{tag_name}}/">{{ tag_name }}</a>
-    </li>
-    <a name="{{ tag_name | slugize }}"></a>
-
-{% endfor %}
+<div class="project-language">
+    {% for lang in page.languages %}
+    {% assign lang_slug = lang | downcase | replace: " ", "-" %}
+    <a href="{{ site.baseurl }}/projects/languages/{{ lang_slug }}/" class="badge bg-secondary">
+        {{ lang }}
+    </a>
+    {% endfor %}
+</div>

@@ -10,6 +10,9 @@ keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll
 usemathjax: true
 permalink: /projects/Brookline-Bots/
 github_url: "https://github.com/BrooklineBots/brooklinebots.org"
+pagination:
+  enabled: true
+  collection: projects
 ---
 
 ### Project Description

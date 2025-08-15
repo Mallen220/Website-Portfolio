@@ -2,21 +2,20 @@
 layout: default
 ---
 
-<h5>Projects by Language: {{ page.language_key }}</h5>
+<h5>Projects by Language: {{ page.title }}</h5>
 
 <div class="card">
-    {% assign lang = page.title %}
-    {% assign projects = site.languages[lang] %}
+    {% assign lang_key = page.language_key | default: page.title | downcase %}
+    {% assign projects = site.data.languages[lang_key] %}
+
     {% if projects %}
-    <div class="card">
-        {% for project in projects %}
-        <li class="language-project">
-            <span>{{ project.date | date: "%b %d, %Y" }}</span> &nbsp;
-            <a href="{{ project.url }}">{{ project.title }}</a>
-        </li>
-        {% endfor %}
-    </div>
+    {% for project in projects %}
+    <li class="language-project">
+        <span>{{ project.date | date: "%b %d, %Y" }}</span> &nbsp;
+        <a href="{{ site.baseurl }}{{ project.url }}">{{ project.title }}</a>
+    </li>
+    {% endfor %}
     {% else %}
-    <p>No projects found for {{ lang }}</p>
+    <p>No projects found for {{ page.title }}</p>
     {% endif %}
 </div>

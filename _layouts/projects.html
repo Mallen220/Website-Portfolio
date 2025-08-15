@@ -6,57 +6,60 @@ layout: default
       <div class="col-lg-8">
               <ul>
                   <div class="row">
-                      {% for project in site.projects reversed %}
-                          <div class="card projects-project">
-                              <img class="card-img-top" src="{{site.url}}{{site.baseurl}}{{ project.thumbnail }}" alt="{{ project.title }}">
-                              <div class="card-body center">
-                                  <!-- <img src="{{site.url}}{{site.baseurl}}/assets/img/{{ site.author_logo }}" class="author-profile-img"> -->
-                                  <h4 class="card-title">{{ project.title }}</h4>
+                      {% for project in paginator.posts %}
+                      <div class="card projects-project">
+                          <img class="card-img-top" src="{{ project.thumbnail | prepend: site.baseurl }}" alt="{{ project.title }}">
+                          <div class="card-body">
+                              <h4 class="card-title">{{ project.title }}</h4>
+                              <h6 class="card-subtitle">{{ project.date | date: "%b %-d, %Y" }}</h6>
+                              <p class="card-text">{{ project.summary }}</p>
+                              <a href="{{ project.url | prepend: site.baseurl }}" class="btn btn-dark">Read</a>
 
-                                  <h6 class="card-subtitle mb-2 text-muted">{{ project.date | date: "%b %-d, %Y" }}</h6>
-                                  <p class="card-text">{{ project.summary }} </p>
-
-                                  <a href="{{ project.url | prepend: site.baseurl }}" data-disqus-identifier="{{ project.url }}" class="btn btn-dark btn-lg">Read</a>
-                                  <span class="disqus-comment-count" data-disqus-identifier="{{ project.url }}"></span>
-
+                              <!-- Languages -->
+                              <div class="project-languages mt-2">
+                                  {% for lang in project.languages %}
+                                  <a href="{{ '/projects/languages/' | append: lang | downcase | prepend: site.baseurl }}"
+                                     class="badge bg-secondary">
+                                      {{ lang }}
+                                  </a>
+                                  {% endfor %}
                               </div>
                           </div>
+                      </div>
                       {% endfor %}
                   </div>
               </ul>
 
         <div class="row center">
           <!-- Pagination links -->
-          {% if paginator.total_pages > 1 %}
-            <ul class="pagination pagination-sm">
-              {% if paginator.previous_page %}
-                <li class="pagination-link"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a></li>
-              {% else %}
-                <li class="pagination-link disabled"><span aria-hidden="true">&laquo;</span></li>
-              {% endif %}
+            {% if paginator.total_pages > 1 %}
+            <nav>
+                <ul class="pagination">
+                    {% if paginator.previous_page %}
+                    <li class="page-item">
+                        <a href="{{ paginator.previous_page_path }}" class="page-link">&laquo;</a>
+                    </li>
+                    {% endif %}
 
-              <li class="pagination-link" ><a href="/projects">First</a></li>
+                    {% for page in (1..paginator.total_pages) %}
+                    <li class="page-item {% if page == paginator.page %}active{% endif %}">
+                        <a href="{% if page == 1 %}/projects{% else %}/projects/page/{{ page }}{% endif %}"
+                           class="page-link">
+                            {{ page }}
+                        </a>
+                    </li>
+                    {% endfor %}
 
-              {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-             <li class="disabled pagination-link"><span><b>{{ page }}</b></span></li>
-                {% elsif page == 1 %}
-                  <li class="pagination-link"><a href="/projects">{{ page }}</a></li>
-                {% else %}
-                  <li class="pagination-link"><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
-                {% endif %}
-              {% endfor %}
+                    {% if paginator.next_page %}
+                    <li class="page-item">
+                        <a href="{{ paginator.next_page_path }}" class="page-link">&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
 
-              <li class="pagination-link"><a href="/projects/page/{{ paginator.total_pages }}/#/">Last</a></li>
-
-              {% if paginator.next_page %}
-                <li class="pagination-link"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a></li>
-              {% else %}
-                <li class="disabled pagination-link"><span>&raquo;</span></li>
-              {% endif %}
-            </ul>
-          {% endif %}
-      </div>
+        </div>
 
     </div>
     {%- include project_sidebar.html -%}

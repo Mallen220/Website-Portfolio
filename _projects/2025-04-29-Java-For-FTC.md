@@ -10,6 +10,9 @@ keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll
 usemathjax: true
 permalink: /projects/Java-For-FTC/
 github_url: "https://github.com/Mallen220/Java-For-FTC"
+pagination:
+  enabled: true
+  collection: projects
 ---
 
 ### Project Description

@@ -10,6 +10,9 @@ keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll
 usemathjax: true
 permalink: /projects/team-broncobots/
 github_url: "https://github.com/FRCTeam1987/teambroncobots.com"
+pagination:
+  enabled: true
+  collection: projects
 ---
 
 ### Project Description: FRC Team 1987 Broncobots Website

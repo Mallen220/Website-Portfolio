@@ -10,6 +10,9 @@ keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll
 usemathjax: true
 permalink: /projects/source-finder/
 github_url: "https://github.com/Mallen220/Source-Finder"
+pagination:
+   enabled: true
+   collection: projects
 ---
 
 

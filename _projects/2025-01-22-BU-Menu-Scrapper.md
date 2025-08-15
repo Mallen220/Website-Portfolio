@@ -10,6 +10,9 @@ keywords: devlopr jekyll, how to use devlopr, devlopr, how to use devlopr-jekyll
 usemathjax: true
 permalink: /projects/BU-Menu-Scrapper/
 github_url: "https://github.com/Mallen220/BUMenuScrapper"
+pagination:
+  enabled: true
+  collection: projects
 ---
 
 ### Project Description
