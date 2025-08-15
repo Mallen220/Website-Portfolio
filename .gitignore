@@ -4,3 +4,4 @@ _site
 .gradle
 assets/bower_components
 .jekyll-metadata
+.DS_Store
