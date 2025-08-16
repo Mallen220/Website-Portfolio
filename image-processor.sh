@@ -24,61 +24,69 @@ for gallery in "$GALLERY_DIR"/*; do
     for image in "$gallery"/*; do
       if [ -f "$image" ]; then
         filename=$(basename "$image")
+
+        # Skip files with EXIF comment "processed"
+        processed=$(magick identify -format "%[EXIF:Comment]" "$image" 2>/dev/null)
+        if [ "$processed" = "processed" ]; then
+          echo " → Skipping already processed: $filename"
+          continue
+        fi
+
         extension="${filename##*.}"
         base_name="${filename%.*}"
 
         # Watermark + recompress original if no thumbnail yet
-            image_height=$(magick identify -format "%h" "$image")
-            image_width=$(magick identify -format "%w" "$image")
-            original_pointsize=$(awk -v h="$image_height" 'BEGIN {
-                ps = int(h * 0.05);
-                if (ps < 12) ps = 12;
-                print ps
-            }')
+        image_width=$(magick identify -format "%w" "$image" 2>/dev/null)
+        image_height=$(magick identify -format "%h" "$image" 2>/dev/null)
 
-            echo " → Watermarking original: $filename"
-
-            # Start parameters
-            quality=80
-            width=$image_width
-            tmpfile="${image%.${extension}}-tmp.jpg"
-
-            # Loop until file < 1MB or limits reached
-            while true; do
-              magick "$image" \
-                  -resize "${width}x" \
-                  -quality "$quality" \
-                  -gravity south \
-                  -depth 8 \
-                  -strip \
-                  -format jpg \
-                  -pointsize "$original_pointsize" \
-                  -stroke black -strokewidth 2 -annotate +0+10 'Photo by Matthew Allen' \
-                  -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
-                  +profile '*' \
-                  "$tmpfile"
-
-              filesize=$(get_file_size "$tmpfile")
-
-              max_filesize=750000  # 0.5 MB
-
-              if [ "$filesize" -lt $max_filesize ] || [ "$quality" -le 50 ] || [ "$width" -le 2000 ]; then
-                mv "$tmpfile" "$image"
-                break
-              fi
-
-              # Decrease quality first
-              if [ "$quality" -gt 60 ]; then
-                quality=$((quality - 5))
-              fi
-
-              # Then start decreasing width
-              if [ "$filesize" -ge $max_filesize ] && [ "$width" -gt 2000 ]; then
-                width=$((width - 300))
-              fi
-            done
+        if [ -z "$image_width" ] || [ -z "$image_height" ]; then
+            echo " → Skipping $filename, cannot read dimensions"
+            continue
         fi
 
+        min_dim=$(( image_width < image_height ? image_width : image_height ))
+
+        original_pointsize=$(awk -v d="$min_dim" 'BEGIN {
+            ps = int(d * 0.03);
+            if (ps < 12) ps = 12;
+            print ps
+        }')
+
+        echo " → Watermarking: $filename"
+
+        quality=70
+        width=$image_width
+        tmpfile="${image%.${extension}}-tmp.jpg"
+
+        while true; do
+          magick "$image" \
+              -resize "${width}x" \
+              -quality "$quality" \
+              -gravity south \
+              -depth 8 \
+              -strip \
+              -format jpg \
+              -pointsize "$original_pointsize" \
+              -stroke black -strokewidth 10 -annotate +0+10 'Photo by Matthew Allen' \
+              -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
+              +profile '*' \
+              "$tmpfile"
+
+          filesize=$(get_file_size "$tmpfile")
+          max_filesize=750000  # 0.75 MB
+
+          if [ "$filesize" -lt $max_filesize ] || [ "$quality" -le 50 ] || [ "$width" -le 2000 ]; then
+            # Mark as processed
+            magick "$tmpfile" -set comment "processed" "$image"
+            rm -f "$tmpfile"
+            break
+          fi
+
+          if [ "$filesize" -ge $max_filesize ] && [ "$width" -gt 2000 ]; then
+            width=$((width - 400))
+          fi
+        done
+      fi
     done
   fi
 done
