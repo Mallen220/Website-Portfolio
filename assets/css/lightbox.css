@@ -1,0 +1,237 @@
+/* Lightbox Styles */
+.custom-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.custom-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+
+.custom-lightbox-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.custom-lightbox-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.7);
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.custom-lightbox-btn:hover {
+  background: rgba(50, 50, 50, 0.9);
+  transform: scale(1.1);
+}
+
+.custom-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 5;
+}
+
+.custom-nav-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.7);
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.2s ease;
+}
+
+.custom-nav-btn:hover {
+  background: rgba(50, 50, 50, 0.9);
+  transform: scale(1.1);
+}
+
+.custom-lightbox-zoom-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  background: rgba(30, 30, 30, 0.7);
+  padding: 10px 15px;
+  border-radius: 30px;
+  z-index: 10;
+}
+
+.custom-zoom-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.custom-zoom-btn:hover {
+  background: rgba(50, 50, 50, 0.9);
+}
+
+.custom-lightbox-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+}
+
+.custom-lightbox-counter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 18px;
+  background: rgba(30, 30, 30, 0.7);
+  padding: 5px 15px;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.custom-original-indicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  background: rgba(30, 30, 30, 0.7);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-lightbox-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  z-index: 10;
+}
+
+/* Masonry Layout Styles */
+.gallery-grid {
+  position: relative;
+  margin: 0 auto;
+}
+
+.gallery-grid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.gallery-grid-sizer,
+.gallery-item {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 576px) {
+  .gallery-grid-sizer,
+  .gallery-item {
+    width: calc(50% - 7.5px);
+  }
+}
+
+@media (min-width: 992px) {
+  .gallery-grid-sizer,
+  .gallery-item {
+    width: calc(33.333% - 10px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .gallery-grid-sizer,
+  .gallery-item {
+    width: calc(25% - 11.25px);
+  }
+}
+
+.gallery-grid-sizer {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Ensure proper image sizing */
+.gallery-thumbnail {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background-color: #f5f5f5;
+}

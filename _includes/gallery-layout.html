@@ -15,26 +15,31 @@ assign sizes = "800,1600" | split: "," %}
   {% endif %}
 
   <div class="gallery-grid" id="gallery-{{ include.picture_path | slugify }}">
+    <!-- Masonry grid sizer -->
+    <div class="gallery-grid-sizer"></div>
+
     {% for image in gallery_images %} {% assign base_name = image | split: '.' |
-    first %} {% assign ext = image | split: '.' | last %}
+    first %} {% assign ext = image | split: '.' | last %} {% assign caption =
+    image | replace: '-', ' ' | split: '.' | first | capitalize %}
 
     <div class="gallery-item">
       <a
-        href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-1600.{{ ext }}"
+        href="javascript:void(0);"
         class="gallery-link"
-        data-download-url="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image }}"
-        data-sub-html="<h4>{{ image | replace: '-', ' ' | split: '.' | first | capitalize }}</h4>"
+        data-src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-1600.{{ ext }}"
+        data-original="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image }}"
+        data-caption="{{ caption }}"
       >
         <img
           loading="lazy"
           class="gallery-thumbnail"
-          alt="{{ image | split: '.' | first | replace: '-', ' ' | capitalize }}"
+          alt="{{ caption }}"
           src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-400.{{ ext }}"
           srcset="
-              {% for size in sizes %}
-                {{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-{{ size }}.{{ ext }} {{ size }}w,
-              {% endfor %}
-            "
+                {% for size in sizes %}
+                  {{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-{{ size }}.{{ ext }} {{ size }}w,
+                {% endfor %}
+              "
           sizes="(max-width: 576px) 95vw, (max-width: 992px) 45vw, 30vw"
         />
       </a>
@@ -42,27 +47,3 @@ assign sizes = "800,1600" | split: "," %}
     {% endfor %}
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Initialize lightGallery with download button
-    const galleryId = "gallery-{{ include.picture_path | slugify }}";
-    lightGallery(document.getElementById(galleryId), {
-      selector: ".gallery-link",
-      download: true,
-      actualSize: false,
-      counter: true,
-      getCaptionFromTitleOrAlt: true,
-      addClass: "gallery-lightbox",
-      plugins: [lgZoom, lgThumbnail, lgDownload],
-      downloadExtraProps: {
-        title: function (item) {
-          return item.el.alt || "Download";
-        },
-      },
-      downloadURL: function (item) {
-        return item.el.dataset.downloadUrl || item.src;
-      },
-    });
-  });
-</script>
