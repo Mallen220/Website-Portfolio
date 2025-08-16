@@ -26,10 +26,10 @@ for gallery in "$GALLERY_DIR"/*; do
         filename=$(basename "$image")
 
         # Skip files with EXIF comment "processed"
-        processed=$(magick identify -format "%[EXIF:Comment]" "$image" 2>/dev/null)
+        processed=$(magick identify -format "%[comment]" "$image" 2>/dev/null | tr -d '\n\r')
         if [ "$processed" = "processed" ]; then
-          echo " → Skipping already processed: $filename"
-          continue
+            echo " → Skipping already processed: $filename"
+            continue
         fi
 
         extension="${filename##*.}"
@@ -77,7 +77,7 @@ for gallery in "$GALLERY_DIR"/*; do
 
           if [ "$filesize" -lt $max_filesize ] || [ "$quality" -le 50 ] || [ "$width" -le 2000 ]; then
             # Mark as processed
-            magick "$tmpfile" -set comment "processed" "$image"
+            magick "$tmpfile" -comment "processed" "$image"
             rm -f "$tmpfile"
             break
           fi
