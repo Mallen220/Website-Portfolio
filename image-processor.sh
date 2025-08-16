@@ -16,72 +16,45 @@ for gallery in "$GALLERY_DIR"/*; do
         extension="${filename##*.}"
         base_name="${filename%.*}"
 
-        output_800="$gallery/$base_name-800.$extension"
-        output_1600="$gallery/$base_name-1600.$extension"
+        output_thumb="$gallery/$base_name-thumbnail.$extension"
 
-        # Skip entirely if both resized versions exist
-        if [ -f "$output_800" ] && [ -f "$output_1600" ]; then
-          echo " → Skipping $filename (all sizes already exist)"
-          continue
-        fi
-
-        if [[ "$filename" == *-800.* || "$filename" == *-1600.* ]]; then
+        # Skip already processed thumbnails
+        if [[ "$filename" == *-thumbnail.* ]]; then
             echo "Skipping processed file: $filename"
             continue
-          fi
+        fi
 
-        for size in 800 1600; do
-          output="$gallery/$base_name-$size.$extension"
+        # Watermark original image if thumbnail doesn't exist yet
+        if [ ! -f "$output_thumb" ]; then
+            image_height=$(magick identify -format "%h" "$image")
+            original_pointsize=$(awk -v h="$image_height" 'BEGIN {
+                ps = int(h * 0.05);
+                if (ps < 12) ps = 12;
+                print ps
+            }')
 
-          if [ -f "$output" ]; then
-            echo "   → Skipping $output (already exists)"
-            continue
-          fi
+            echo " → Watermarking original: $filename"
 
-          # Scale text size proportional to target size (base = 48 for 1600px)
-          if [ "$size" -eq 1600 ]; then
-            pointsize=48
-          elif [ "$size" -eq 800 ]; then
-            pointsize=24
-          else
-            pointsize=24
-          fi
+            magick "$image" \
+                -quality 75 \
+                -gravity south \
+                -pointsize "$original_pointsize" \
+                -stroke black -strokewidth 2 -annotate +0+10 'Photo by Matthew Allen' \
+                -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
+                +profile '*' \
+                "$image"
+        fi
 
-          echo "   → Creating $output"
+        # Create 800px thumbnail from already-watermarked original
+        if [ ! -f "$output_thumb" ]; then
+            echo " → Creating thumbnail: $output_thumb"
 
-          # Smaller Sizes
-          magick convert "$image" \
-            -resize ${size}x \
-            -quality 65 \
-            -gravity south \
-            -pointsize $pointsize \
-            -stroke black -strokewidth 2 -annotate +0+10 'Photo by Matthew Allen' \
-            -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
-            +profile '*' \
-            "$output"
-
-        done
-
-        # Calculate pointsize by taking 0.03% of the image height
-        image_height=$(magick identify -format "%h" "$image")
-        original_pointsize=$(awk -v h="$image_height" 'BEGIN {
-            ps = int(h * 0.05);
-            if (ps < 12) ps = 12;  # set a minimum size
-            print ps
-        }')
-
-
-        #Original Size but with a watermark and smaller quality
-        magick convert "$image" \
-            -quality 75 \
-            -gravity south \
-            -pointsize "$original_pointsize" \
-            -stroke black -strokewidth 2 -annotate +0+10 'Photo by Matthew Allen' \
-            -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
-            +profile '*' \
-            "$image"
-
-
+            magick "$image" \
+                -resize 800x \
+                -quality 65 \
+                +profile '*' \
+                "$output_thumb"
+        fi
       fi
     done
   fi

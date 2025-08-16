@@ -5,11 +5,11 @@
 #   - _data/galleries/overview.yml with one entry per folder
 #
 # Behavior:
-#   - Only considers originals (ignores files ending with -800.* or -1600.*).
-#   - Supports extensions: jpg|jpeg|png|gif|webp (case-insensitive).
-#   - Writes "filename" without extension; "original"/"thumbnail" use the same extension as the source.
-#   - Ensures overview preview images exist; if missing, copies from the first picture’s resized files.
-#   - Removes stale *_data/galleries/*.yml (except overview.yml) that no longer correspond to a folder.
+#  - Only considers originals (ignores files ending with -thumbnail.*).
+#  - Supports extensions: jpg|jpeg|png|gif|webp (case-insensitive).
+#  - Writes "filename" without extension; "original"/"thumbnail" use the same extension as the source.
+#  - Ensures overview preview images exist; if missing, copies from the first picture’s resized thumbnail.
+#  - Removes stale *_data/galleries/*.yml (except overview.yml) that no longer correspond to a folder.
 
 require "yaml"
 require "fileutils"
@@ -18,13 +18,12 @@ ROOT       = File.expand_path(__dir__ + "/..") # repo root (scripts/..)
 GALLERY    = File.join(ROOT, "Website-Portfolio/assets/img/gallery")
 DATA_DIR   = File.join(ROOT, "Website-Portfolio/_data/galleries")
 VALID_EXTS = %w[jpg jpeg png gif webp]
-RES_SIZES  = [800, 1600] # must match your resizing script
 
 def valid_image?(filename)
   ext = File.extname(filename).downcase.delete_prefix(".")
   return false unless VALID_EXTS.include?(ext)
   base = File.basename(filename, ".*")
-  return false if base.end_with?("-800") || base.end_with?("-1600")
+  return false if base.end_with?("-thumbnail")
   true
 end
 
@@ -71,43 +70,19 @@ def write_gallery_yaml(folder_name, pictures)
 end
 
 def ensure_preview_images(folder_path, folder_name, pictures)
-  preview_base = File.join(folder_path, "#{folder_name}_thumbnail")
-  # If any exact pair exists, use that ext
-  chosen_ext = VALID_EXTS.find { |ext| RES_SIZES.all? { |sz| File.exist?("#{preview_base}-#{sz}.#{ext}") } }
-  if chosen_ext
-    return {
-      ext: chosen_ext,
-      paths: RES_SIZES.map { |sz| [sz, "#{preview_base}-#{sz}.#{chosen_ext}"] }.to_h
-    }
-  end
+  preview_file = File.join(folder_path, "#{folder_name}-thumbnail")
+  chosen_ext = VALID_EXTS.find { |ext| File.exist?("#{preview_file}.#{ext}") }
+  return chosen_ext if chosen_ext
 
-  # If none exist, try to create them from the first picture's resized assets
   return nil if pictures.empty?
 
   first = pictures.first
   ext   = first[:ext]
-  created = {}
-  RES_SIZES.each do |sz|
-    src = File.join(folder_path, "#{first[:filename]}-#{sz}.#{ext}")
-    dst = "#{preview_base}-#{sz}.#{ext}"
-    if File.exist?(src)
-      FileUtils.cp(src, dst) unless File.exist?(dst)
-      created[sz] = dst
-    end
-  end
+  src   = File.join(folder_path, "#{first[:filename]}-thumbnail.#{ext}")
+  dst   = "#{preview_file}.#{ext}"
 
-  # If we created both sizes, return ext/paths
-  if created.size == RES_SIZES.size
-    return { ext: ext, paths: created }
-  end
-
-  # Fallback: find any ext with at least one size and return best guess
-  found_ext = VALID_EXTS.find { |e| RES_SIZES.any? { |sz| File.exist?("#{preview_base}-#{sz}.#{e}") } }
-  if found_ext
-    return { ext: found_ext, paths: RES_SIZES.map { |sz| [sz, "#{preview_base}-#{sz}.#{found_ext}"] }.to_h }
-  end
-
-  nil
+  FileUtils.cp(src, dst) if File.exist?(src) && !File.exist?(dst)
+  File.exist?(dst) ? ext : nil
 end
 
 def build_pictures(folder_path, originals)
@@ -116,8 +91,8 @@ def build_pictures(folder_path, originals)
     ext  = File.extname(fname).delete_prefix(".")
     {
       filename: "#{base}.#{ext}",
-      original: "#{base}-1600.#{ext}",
-      thumbnail: "#{base}-800.#{ext}",
+      original: "#{base}.#{ext}",
+      thumbnail: "#{base}-thumbnail.#{ext}",
       ext: ext # internal only
     }
   end
@@ -141,7 +116,6 @@ def generate
     originals = list_originals(folder_path)
 
     pictures = build_pictures(folder_path, originals)
-    # Convert for YAML output with numeric filename handling
     yaml_pictures = pictures.map do |p|
       {
         "filename"  => filename_yaml_value(p[:filename]),
@@ -153,31 +127,17 @@ def generate
     yml_path = write_gallery_yaml(folder_name, yaml_pictures)
     generated_files << File.basename(yml_path)
 
-    preview_info = ensure_preview_images(folder_path, folder_name, pictures)
-
-    if preview_info
-      ext = preview_info[:ext]
-      overview_entries << {
-        "title" => folder_name,
-        "directory" => folder_name,
-        "preview" => {
-          "filename" => "#{folder_name}_thumbnail-1600.#{ext}",
-          "thumbnail" => "#{folder_name}_thumbnail-800.#{ext}"
-        }
+    ext = ensure_preview_images(folder_path, folder_name, pictures) || "jpg"
+    overview_entries << {
+      "title" => folder_name,
+      "directory" => folder_name,
+      "preview" => {
+        "filename" => "#{folder_name}-thumbnail.#{ext}",
+        "thumbnail" => "#{folder_name}-thumbnail.#{ext}"
       }
-    else
-      overview_entries << {
-        "title" => folder_name,
-        "directory" => folder_name,
-        "preview" => {
-          "filename" => "#{folder_name}_thumbnail-1600.jpg",
-          "thumbnail" => "#{folder_name}_thumbnail-800.jpg"
-        }
-      }
-    end
+    }
   end
 
-  # Write overview sorted by title (case-insensitive)
   overview_entries.sort_by! { |e| e["title"].downcase }
   write_overview_yaml(overview_entries)
   generated_files << "overview.yml"

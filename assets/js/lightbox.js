@@ -16,10 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const img = document.createElement("img");
   img.className = "custom-lightbox-img";
 
-  const originalIndicator = document.createElement("div");
-  originalIndicator.className = "custom-original-indicator";
-  originalIndicator.textContent = "ORIGINAL RESOLUTION";
-
   const caption = document.createElement("div");
   caption.className = "custom-lightbox-caption";
 
@@ -91,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
   lightboxContent.appendChild(counter);
   lightboxContent.appendChild(loader);
   lightboxContent.appendChild(img);
-  lightboxContent.appendChild(originalIndicator);
   lightboxContent.appendChild(caption);
 
   lightbox.appendChild(lightboxContent);
@@ -112,6 +107,9 @@ document.addEventListener("DOMContentLoaded", function () {
     translateY = 0;
   let galleryItems = [];
   let dragStartTime = 0;
+
+  // Track preloaded originals
+  const preloadedOriginals = new Set();
 
   // Initialize Masonry for gallery grids
   function initMasonry() {
@@ -143,10 +141,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Preload original images
+  function preloadOriginalImage(index) {
+    if (
+      index < 0 ||
+      index >= galleryItems.length ||
+      preloadedOriginals.has(index)
+    )
+      return;
+
+    const item = galleryItems[index];
+    const link = item.querySelector(".gallery-link");
+    const originalSrc = link.dataset.original;
+
+    if (!originalSrc) return;
+
+    // Create image to preload
+    const preloadImg = new Image();
+    preloadImg.src = originalSrc;
+    preloadedOriginals.add(index);
+  }
+
+  // Preload a range of original images
+  function preloadOriginalRange(startIndex, endIndex) {
+    for (let i = startIndex; i <= endIndex; i++) {
+      preloadOriginalImage(i);
+    }
+  }
+
   // Initialize lightbox functionality
   function initLightbox() {
     // Get all gallery items
     galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+
+    // Preload first 5 original images on page load
+    const initialPreloadEnd = Math.min(4, galleryItems.length - 1);
+    preloadOriginalRange(0, initialPreloadEnd);
 
     // Add click event to each gallery item
     galleryItems.forEach((item, index) => {
@@ -217,6 +247,11 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.classList.add("active");
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleKeyDown);
+
+    // Preload neighboring originals (3 back, 5 forward)
+    const preloadStart = Math.max(0, currentIndex - 3);
+    const preloadEnd = Math.min(galleryItems.length - 1, currentIndex + 5);
+    preloadOriginalRange(preloadStart, preloadEnd);
   }
 
   // Close lightbox
@@ -234,7 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
     translateY = 0;
     isOriginalLoaded = false;
     applyTransform();
-    originalIndicator.style.opacity = "0";
   }
 
   // Update lightbox content
@@ -267,9 +301,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     imgObj.src = src;
 
-    // Preload original
-    const originalImg = new Image();
-    originalImg.src = originalSrc;
+    // Preload current original
+    if (originalSrc && !preloadedOriginals.has(currentIndex)) {
+      const preloadImg = new Image();
+      preloadImg.src = originalSrc;
+      preloadedOriginals.add(currentIndex);
+    }
   }
 
   // Navigation
@@ -277,16 +314,26 @@ document.addEventListener("DOMContentLoaded", function () {
     currentIndex =
       (currentIndex - 1 + galleryItems.length) % galleryItems.length;
     updateLightbox();
+
+    // Preload additional images as we navigate
+    const preloadStart = Math.max(0, currentIndex - 3);
+    const preloadEnd = Math.min(galleryItems.length - 1, currentIndex + 1);
+    preloadOriginalRange(preloadStart, preloadEnd);
   }
 
   function goToNext() {
     currentIndex = (currentIndex + 1) % galleryItems.length;
     updateLightbox();
+
+    // Preload additional images as we navigate
+    const preloadStart = Math.max(0, currentIndex - 1);
+    const preloadEnd = Math.min(galleryItems.length - 1, currentIndex + 3);
+    preloadOriginalRange(preloadStart, preloadEnd);
   }
 
   // Zoom functions
   function zoomIn() {
-    if (currentZoom >= 10) return;
+    if (currentZoom >= 5) return;
 
     currentZoom += 0.25;
     applyTransform();
@@ -341,7 +388,6 @@ document.addEventListener("DOMContentLoaded", function () {
       img.src = this.src;
       loader.style.display = "none";
       isOriginalLoaded = true;
-      originalIndicator.style.opacity = "1";
     };
     imgObj.src = originalSrc;
   }
@@ -402,15 +448,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize Masonry when page loads
   initMasonry();
-
-  // Re-initialize Masonry when lightbox closes
-  function closeLightbox() {
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
-    document.removeEventListener("keydown", handleKeyDown);
-    resetImageState();
-    initMasonry();
-  }
 
   // Initialize lightbox functionality
   initLightbox();

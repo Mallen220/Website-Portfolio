@@ -1,5 +1,4 @@
-{% assign gallery_images = site.data.auto_galleries[include.picture_path] %} {%
-assign sizes = "800,1600" | split: "," %}
+{% assign gallery_images = site.data.auto_galleries[include.picture_path] %}
 
 <div class="gallery-container">
   {% if include.google_photos_album %}
@@ -18,28 +17,23 @@ assign sizes = "800,1600" | split: "," %}
     <!-- Masonry grid sizer -->
     <div class="gallery-grid-sizer"></div>
 
-    {% for image in gallery_images %} {% assign base_name = image | split: '.' |
-    first %} {% assign ext = image | split: '.' | last %} {% assign caption =
-    image | replace: '-', ' ' | split: '.' | first | capitalize %}
+    {% for image in gallery_images %} {% assign base_name = image.original |
+    split: '.' | first %} {% assign ext = image.original | split: '.' | last %}
+    {% assign caption = image.filename | replace: '-', ' ' | split: '.' | first
+    | capitalize %}
 
     <div class="gallery-item">
       <a
-        href="javascript:void(0);"
+        href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image.original }}"
         class="gallery-link"
-        data-src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-1600.{{ ext }}"
-        data-original="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image }}"
         data-caption="{{ caption }}"
       >
         <img
           loading="lazy"
           class="gallery-thumbnail"
           alt="{{ caption }}"
-          src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-400.{{ ext }}"
-          srcset="
-                {% for size in sizes %}
-                  {{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-{{ size }}.{{ ext }} {{ size }}w,
-                {% endfor %}
-              "
+          src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image.thumbnail }}"
+          srcset="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image.thumbnail }} 800w"
           sizes="(max-width: 576px) 95vw, (max-width: 992px) 45vw, 30vw"
         />
       </a>

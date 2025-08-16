@@ -1,11 +1,11 @@
 picture_path: mountains
 pictures:
   - filename: 2.jpg
-    original: 2-1600.jpg
-    thumbnail: 2-800.jpg
+    original: 2.jpg
+    thumbnail: 2-thumbnail.jpg
   - filename: 3.jpg
-    original: 3-1600.jpg
-    thumbnail: 3-800.jpg
-  - filename: mountains_thumbnail.jpg
-    original: mountains_thumbnail-1600.jpg
-    thumbnail: mountains_thumbnail-800.jpg
+    original: 3.jpg
+    thumbnail: 3-thumbnail.jpg
+  - filename: mountains.jpg
+    original: mountains.jpg
+    thumbnail: mountains-thumbnail.jpg
