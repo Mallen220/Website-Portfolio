@@ -17,8 +17,9 @@ permalink: /gallery/
       gallery data from site.data.galleries[gallery.directory] {% endcomment %}
       {% assign gallery_data = site.data.galleries[gallery.directory] %}
 
-      <div class="col-md-4 col-lg-3 mb-4">
-        <div class="gallery-card card h-100">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="gallery-card card">
+          <!--           h-70-->
           <a
             href="{{ site.baseurl }}/gallery/{{ gallery.directory }}/"
             class="gallery-card-link"
@@ -67,7 +68,7 @@ permalink: /gallery/
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 100%;
+    height: 85%;
   }
 
   .gallery-card:hover {
@@ -83,7 +84,8 @@ permalink: /gallery/
   }
 
   .gallery-card .card-img-top {
-    height: 200px;
+    /*change card height*/
+    height: 175px;
     object-fit: cover;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }

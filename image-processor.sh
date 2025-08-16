@@ -77,7 +77,7 @@ for gallery in "$GALLERY_DIR"/*; do
 
           if [ "$filesize" -lt $max_filesize ] || [ "$quality" -le 50 ] || [ "$width" -le 2000 ]; then
             # Mark as processed
-            magick "$tmpfile" -comment "processed" "$image"
+            magick "$tmpfile" -set comment "processed" "$image"
             rm -f "$tmpfile"
             break
           fi
