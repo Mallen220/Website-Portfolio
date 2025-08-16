@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   lightboxContent.appendChild(counter);
   lightboxContent.appendChild(loader);
   lightboxContent.appendChild(img);
-  lightboxContent.appendChild(caption);
+  // lightboxContent.appendChild(caption);
 
   lightbox.appendChild(lightboxContent);
   lightbox.appendChild(controls);

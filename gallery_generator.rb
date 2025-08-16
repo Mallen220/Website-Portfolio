@@ -66,8 +66,32 @@ def write_gallery_yaml(folder_name, pictures)
     "picture_path" => folder_name,
     "pictures" => pictures
   }
-  write_yaml_file(yml_path, data)
+
+  yaml = YAML.dump(data)
+  yaml.sub!(/\A---\s*\n/, "")
+
+  # Fix indentation for the pictures array
+  fixed_yaml = []
+  in_pictures = false
+  yaml.each_line do |line|
+    if line.start_with?("pictures:")
+      in_pictures = true
+      fixed_yaml << line
+    elsif in_pictures && line =~ /^- /
+      fixed_yaml << "  #{line}" # indent the `- filename:`
+    elsif in_pictures && line =~ /^\s+\w+:/
+      fixed_yaml << "  #{line}" # indent nested keys (`original`, `thumbnail`)
+    else
+      fixed_yaml << line
+      in_pictures = false if line.strip.empty?
+    end
+  end
+
+  FileUtils.mkdir_p(File.dirname(yml_path))
+  File.write(yml_path, fixed_yaml.join)
+  yml_path
 end
+
 
 def ensure_preview_images(folder_path, folder_name, pictures)
   preview_file = File.join(folder_path, "#{folder_name}-thumbnail")
