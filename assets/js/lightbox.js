@@ -111,27 +111,35 @@ document.addEventListener("DOMContentLoaded", function () {
     translateX = 0,
     translateY = 0;
   let galleryItems = [];
+  let dragStartTime = 0;
 
   // Initialize Masonry for gallery grids
   function initMasonry() {
     document.querySelectorAll(".gallery-grid").forEach((grid) => {
-      // Initialize Masonry only if not already initialized
-      if (!grid.classList.contains("masonry-initialized")) {
-        grid.classList.add("masonry-initialized");
+      // Skip if already initialized
+      if (grid.dataset.masonryInitialized) return;
+      grid.dataset.masonryInitialized = true;
 
-        const masonry = new Masonry(grid, {
-          itemSelector: ".gallery-item",
-          columnWidth: ".gallery-grid-sizer",
-          gutter: 15,
-          percentPosition: true,
-          transitionDuration: "0.3s",
-        });
-
-        // Use imagesLoaded to trigger layout after images load
-        imagesLoaded(grid).on("progress", function () {
-          masonry.layout();
-        });
+      // Add grid sizer if not exists
+      if (!grid.querySelector(".gallery-grid-sizer")) {
+        const sizer = document.createElement("div");
+        sizer.className = "gallery-grid-sizer";
+        grid.prepend(sizer);
       }
+
+      // Initialize Masonry
+      const masonry = new Masonry(grid, {
+        itemSelector: ".gallery-item",
+        columnWidth: ".gallery-grid-sizer",
+        gutter: 15,
+        percentPosition: true,
+        transitionDuration: "0.3s",
+      });
+
+      // Use imagesLoaded to trigger layout after images load
+      imagesLoaded(grid).on("progress", function () {
+        masonry.layout();
+      });
     });
   }
 
@@ -165,7 +173,9 @@ document.addEventListener("DOMContentLoaded", function () {
     img.addEventListener("mousedown", function (e) {
       if (currentZoom <= 1) return;
 
+      e.preventDefault(); // Prevent default drag behavior
       isDragging = true;
+      dragStartTime = Date.now();
       startX = e.clientX - translateX;
       startY = e.clientY - translateY;
       img.style.cursor = "grabbing";
@@ -174,14 +184,29 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("mousemove", function (e) {
       if (!isDragging) return;
 
-      translateX = e.clientX - startX;
-      translateY = e.clientY - startY;
-      applyTransform();
+      // Only move if we're actually dragging (not just clicking)
+      if (Date.now() - dragStartTime > 50) {
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        applyTransform();
+      }
     });
 
-    document.addEventListener("mouseup", function () {
+    document.addEventListener("mouseup", function (e) {
+      if (!isDragging) return;
+
       isDragging = false;
       img.style.cursor = currentZoom > 1 ? "grab" : "default";
+
+      // If it was just a click (not drag), close on background click
+      if (Date.now() - dragStartTime < 200 && e.target === img) {
+        closeLightbox();
+      }
+    });
+
+    // Prevent image drag
+    img.addEventListener("dragstart", function (e) {
+      e.preventDefault();
     });
   }
 
@@ -261,9 +286,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Zoom functions
   function zoomIn() {
-    if (currentZoom >= 5) return;
+    if (currentZoom >= 10) return;
 
-    currentZoom += 0.2;
+    currentZoom += 0.25;
     applyTransform();
 
     // Load original if zooming beyond 100% and not already loaded
@@ -273,9 +298,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function zoomOut() {
-    if (currentZoom <= 0.2) return;
+    // Prevent zooming too far out (min 20% of original)
+    if (currentZoom <= 0.25) return;
 
-    currentZoom -= 0.2;
+    if (currentZoom <= 1) {
+      currentZoom -= 0.125;
+    } else {
+      currentZoom -= 0.25;
+    }
     applyTransform();
 
     // Reset position if zoomed out completely
@@ -345,13 +375,27 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
       case "+":
       case "=":
-        if (e.shiftKey || e.key === "+") zoomIn();
+        zoomIn();
+        e.preventDefault(); // Prevent browser zoom
         break;
       case "-":
         zoomOut();
+        e.preventDefault(); // Prevent browser zoom
         break;
       case "0":
         resetZoom();
+        break;
+      case "ArrowUp":
+        if (currentZoom > 1) {
+          translateY += 20;
+          applyTransform();
+        }
+        break;
+      case "ArrowDown":
+        if (currentZoom > 1) {
+          translateY -= 20;
+          applyTransform();
+        }
         break;
     }
   }
@@ -361,8 +405,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Re-initialize Masonry when lightbox closes
   function closeLightbox() {
-    // ... existing close code ...
-    initMasonry(); // Re-init Masonry after closing lightbox
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", handleKeyDown);
+    resetImageState();
+    initMasonry();
   }
 
   // Initialize lightbox functionality

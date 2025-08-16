@@ -48,6 +48,8 @@ for gallery in "$GALLERY_DIR"/*; do
           fi
 
           echo "   → Creating $output"
+
+          # Smaller Sizes
           magick convert "$image" \
             -resize ${size}x \
             -quality 65 \
@@ -57,10 +59,29 @@ for gallery in "$GALLERY_DIR"/*; do
             -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
             +profile '*' \
             "$output"
+
         done
 
-        # Remove original if not needed
-        # rm "$image"
+        # Calculate pointsize by taking 0.03% of the image height
+        image_height=$(magick identify -format "%h" "$image")
+        original_pointsize=$(awk -v h="$image_height" 'BEGIN {
+            ps = int(h * 0.05);
+            if (ps < 12) ps = 12;  # set a minimum size
+            print ps
+        }')
+
+
+        #Original Size but with a watermark and smaller quality
+        magick convert "$image" \
+            -quality 75 \
+            -gravity south \
+            -pointsize "$original_pointsize" \
+            -stroke black -strokewidth 2 -annotate +0+10 'Photo by Matthew Allen' \
+            -stroke none -fill white -annotate +0+10 'Photo by Matthew Allen' \
+            +profile '*' \
+            "$image"
+
+
       fi
     done
   fi
