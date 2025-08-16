@@ -1,23 +1,41 @@
-<!-- Masonry Gallery Layout -->
+{% assign gallery_images = site.data.auto_galleries[include.picture_path] %} {%
+assign sizes = "800,1600" | split: "," %}
+
 <div class="gallery-container">
-  <div
-    class="gallery-grid"
-    id="gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}"
-  >
-    {% for picture in include.gallery.pictures %}
+  {% if include.google_photos_album %}
+  <div class="download-all">
+    <a
+      href="{{ include.google_photos_album }}"
+      class="btn btn-download"
+      target="_blank"
+    >
+      <i class="fa fa-download"></i> Download All Originals from Google Photos
+    </a>
+  </div>
+  {% endif %}
+
+  <div class="gallery-grid" id="gallery-{{ include.picture_path | slugify }}">
+    {% for image in gallery_images %} {% assign base_name = image | split: '.' |
+    first %} {% assign ext = image | split: '.' | last %}
+
     <div class="gallery-item">
       <a
-        href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.original }}"
+        href="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-1600.{{ ext }}"
         class="gallery-link"
-        data-sub-html="<h4>{{ picture.title | escape }}</h4>{% if picture.caption %}<p>{{ picture.caption | escape }}</p>{% endif %}"
+        data-download-url="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ image }}"
+        data-sub-html="<h4>{{ image | replace: '-', ' ' | split: '.' | first | capitalize }}</h4>"
       >
         <img
           loading="lazy"
           class="gallery-thumbnail"
-          alt="{{ picture.title }}"
-          src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.gallery.picture_path }}/{{ picture.thumbnail }}"
-          width="{{ picture.thumbnail_width | default: 300 }}"
-          height="{{ picture.thumbnail_height | default: 300 }}"
+          alt="{{ image | split: '.' | first | replace: '-', ' ' | capitalize }}"
+          src="{{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-400.{{ ext }}"
+          srcset="
+              {% for size in sizes %}
+                {{ site.url }}{{ site.baseurl }}/assets/img/gallery/{{ include.picture_path }}/{{ base_name }}-{{ size }}.{{ ext }} {{ size }}w,
+              {% endfor %}
+            "
+          sizes="(max-width: 576px) 95vw, (max-width: 992px) 45vw, 30vw"
         />
       </a>
     </div>
@@ -25,40 +43,26 @@
   </div>
 </div>
 
-<!-- Gallery Initialization -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Masonry
-    const grid = document.querySelector(".gallery-grid");
-    if (grid) {
-      const masonry = new Masonry(grid, {
-        itemSelector: ".gallery-item",
-        columnWidth: ".gallery-item",
-        gutter: 15,
-        percentPosition: true,
-        transitionDuration: "0.3s",
-      });
-
-      // Relayout after images load
-      imagesLoaded(grid).on("progress", function () {
-        masonry.layout();
-      });
-    }
-
-    // Initialize lightGallery
-    const galleryId =
-      "gallery-{% if include.id_number %}{{ include.id_number }}{% else %}main{% endif %}";
+    // Initialize lightGallery with download button
+    const galleryId = "gallery-{{ include.picture_path | slugify }}";
     lightGallery(document.getElementById(galleryId), {
       selector: ".gallery-link",
-      download: false,
-      thumbnail: true,
-      animateThumb: true,
-      showThumbByDefault: true,
+      download: true,
       actualSize: false,
-      escKey: true,
-      keyPress: true,
-      mode: "lg-slide",
-      speed: 300,
+      counter: true,
+      getCaptionFromTitleOrAlt: true,
+      addClass: "gallery-lightbox",
+      plugins: [lgZoom, lgThumbnail, lgDownload],
+      downloadExtraProps: {
+        title: function (item) {
+          return item.el.alt || "Download";
+        },
+      },
+      downloadURL: function (item) {
+        return item.el.dataset.downloadUrl || item.src;
+      },
     });
   });
 </script>
