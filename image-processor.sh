@@ -73,7 +73,7 @@ for gallery in "$GALLERY_DIR"/*; do
               "$tmpfile"
 
           filesize=$(get_file_size "$tmpfile")
-          max_filesize=750000  # 0.75 MB
+          max_filesize=500000  # 0.5 MB
 
           if [ "$filesize" -lt $max_filesize ] || [ "$quality" -le 50 ] || [ "$width" -le 2000 ]; then
             # Mark as processed
