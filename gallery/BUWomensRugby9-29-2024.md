@@ -1,0 +1,8 @@
+---
+layout: gallery
+title: BU Women's Rugby on 9/29/24
+description: "BU Women's Rugby on September 29, 2024."
+picture_path: BURugby9-29-2024
+#google_photos_album: "https://photos.google.com/share/your-album-link"
+private: false
+---
