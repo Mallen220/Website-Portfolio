@@ -94,7 +94,7 @@ end
 
 
 def ensure_preview_images(folder_path, folder_name, pictures)
-  preview_file = File.join(folder_path, "#{folder_name}-thumbnail")
+  preview_file = File.join(folder_path, "#{folder_name}")
   chosen_ext = VALID_EXTS.find { |ext| File.exist?("#{preview_file}.#{ext}") }
   return chosen_ext if chosen_ext
 
@@ -102,7 +102,7 @@ def ensure_preview_images(folder_path, folder_name, pictures)
 
   first = pictures.first
   ext   = first[:ext]
-  src   = File.join(folder_path, "#{first[:filename]}-thumbnail.#{ext}")
+  src   = File.join(folder_path, "#{first[:filename]}.#{ext}")
   dst   = "#{preview_file}.#{ext}"
 
   FileUtils.cp(src, dst) if File.exist?(src) && !File.exist?(dst)
@@ -116,7 +116,6 @@ def build_pictures(folder_path, originals)
     {
       filename: "#{base}.#{ext}",
       original: "#{base}.#{ext}",
-      thumbnail: "#{base}-thumbnail.#{ext}",
       ext: ext # internal only
     }
   end
@@ -143,8 +142,7 @@ def generate
     yaml_pictures = pictures.map do |p|
       {
         "filename"  => filename_yaml_value(p[:filename]),
-        "original"  => p[:original],
-        "thumbnail" => p[:thumbnail]
+        "original"  => p[:original]
       }
     end
 
@@ -156,8 +154,7 @@ def generate
       "title" => folder_name,
       "directory" => folder_name,
       "preview" => {
-        "filename" => "#{folder_name}-thumbnail.#{ext}",
-        "thumbnail" => "#{folder_name}-thumbnail.#{ext}"
+        "filename" => "#{folder_name}.#{ext}"
       }
     }
   end

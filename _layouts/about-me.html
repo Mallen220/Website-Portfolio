@@ -68,9 +68,9 @@ layout: default
           <a href="{{post.url}}" class="article-card-link">
             <div id="article-container">
               <div id="article-img">
-                {% if post.thumbnail %}
+                {% if post.original %}
                 <img
-                  src="{{site.url}}{{site.baseurl}}/{{post.thumbnail}}"
+                  src="{{site.url}}{{site.baseurl}}/{{post.original}}"
                   width="100px"
                 />
                 {% endif %}

@@ -23,12 +23,12 @@ permalink: /gallery/
             href="{{ site.baseurl }}/gallery/{{ gallery.directory }}.html"
             class="gallery-card-link"
           >
-            {% if gallery.preview and gallery.preview.thumbnail %}
+            {% if gallery.preview and gallery.preview.original %}
             <img
               loading="lazy"
               class="card-img-top"
               alt="{{ gallery.title }}"
-              src="{{ site.baseurl }}/assets/img/gallery/{{ gallery.directory }}/{{ gallery.preview.thumbnail }}"
+              src="{{ site.baseurl }}/assets/img/gallery/{{ gallery.directory }}/{{ gallery.preview.original }}"
             />
             {% else %}
             <div
