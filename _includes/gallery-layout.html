@@ -1,18 +1,6 @@
 {% assign gallery_images = site.data.auto_galleries[include.picture_path] %}
 
 <div class="gallery-container">
-  {% if include.google_photos_album %}
-  <div class="download-all">
-    <a
-      href="{{ include.google_photos_album }}"
-      class="btn btn-download"
-      target="_blank"
-    >
-      <i class="fa fa-download"></i> Download All Originals from Google Photos
-    </a>
-  </div>
-  {% endif %}
-
   <div class="gallery-grid" id="gallery-{{ include.picture_path | slugify }}">
     <!-- Masonry grid sizer -->
     <div class="gallery-grid-sizer"></div>

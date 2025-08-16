@@ -3,8 +3,6 @@ layout: gallery
 title: Mountain Gallery
 description: "Beautiful mountain landscapes from around the world"
 picture_path: mountains
-google_photos_album: "https://photos.google.com/share/your-album-link"
-visible: true
+#google_photos_album: "https://photos.google.com/share/your-album-link"
+private: false
 ---
-
-{% include gallery-layout.html gallery=site.data.galleries.mountains %}

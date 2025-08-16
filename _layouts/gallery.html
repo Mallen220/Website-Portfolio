@@ -32,19 +32,26 @@ layout: default
       <div class="col-12">
         <div class="gallery-header">
           <h1>{{ page.title }}</h1>
-          {% if page.description %}
+          {% if page.private %}
+          <div class="alert alert-warning">
+            <strong>Private Gallery:</strong> This gallery is private and
+            requires a password to view.
+          </div>
+
+          {% else %} {% if page.description %}
           <p class="gallery-description">{{ page.description }}</p>
           {% endif %} {% if page.google_photos_album %}
-          <div class="download-all">
+          <div class="album-link">
             <a
               href="{{ page.google_photos_album }}"
-              class="btn btn-download"
+              class="btn btn-album"
               target="_blank"
+              rel="noopener noreferrer"
             >
-              <i class="fa fa-download"></i> Download All Originals from Google
-              Photos
+              <i class="fa fa-image"></i> View Full Album on Google Photos
             </a>
           </div>
+          <br />
           {% endif %}
         </div>
 
@@ -82,5 +89,7 @@ layout: default
         </div>
       </div>
     </div>
+    <!--    end if for private gallery-->
+    {% endif%}
   </div>
 </div>
