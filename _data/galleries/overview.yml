@@ -1,3 +1,7 @@
+- title: Boston Marathon 2025 Gallery
+  directory: BostonMarathon2025
+  preview:
+    filename: BostonMarathon2025-13.jpg
 - title: Boston March For Science Protest 2025
   directory: MarchForScience2025
   preview:
@@ -10,10 +14,34 @@
   directory: 17218CanadianPremiere2025
   preview:
     filename: CanadaPremiereEvent2025-7103.jpg
+- title: BU Men's Ice Hockey on 1/31
+  directory: MensIceHockey1-31-2025
+  preview:
+    filename: BUHockeyVsUNH--10.jpg
+- title: BU Men's Ice Hockey on 10/12
+  directory: MensIceHockey10-12-2024
+  preview:
+    filename: BU-Hockey-10-12-2024--10.jpg
 - title: BU Women's Hockey vs UConn 2025 Gallery
   directory: BUICEWVSUCONN
   preview:
     filename: BUvsUCONN--10.jpg
+- title: BU Women's Rugby on 10/20/24
+  directory: BUWomensRugby10-20-2024
+  preview:
+    filename: BU-Rugby-10-20-2024--10.jpg
+- title: BU Women's Rugby on 10/6/24
+  directory: BURugby10-6-2024
+  preview:
+    filename: BU-Rugby-10-6-2024--11.jpg
+- title: BU Women's Rugby on 9/29/24
+  directory: BURugby9-29-2024
+  preview:
+    filename: BU-Rugby 9-29-2024--2.jpg
+- title: Mensicehockey1-24-2025
+  directory: MensIceHockey1-24-2025
+  preview:
+    filename: BUHockeyVsBC--10.jpg
 - title: New York City Photos
   directory: NYCPhotos
   preview:
